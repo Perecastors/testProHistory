@@ -1,0 +1,53 @@
+#tabSize{
+        overflow-x : auto;
+        height:400px;
+        overflow-y:auto;
+        font-size:13px;
+        <!--font-family:Arial;-->
+}
+
+#tab{
+            width:2000px;
+            max-width:none;
+}
+
+td{
+        width:100px;
+        text-align:center;
+}
+
+.tabBan{width:3700px}
+
+.tabGameName{
+        width:700px;
+}
+
+.tabRegion{
+        width:50px;
+}
+
+.blueSide{
+        background-color:#81F7F3;
+}
+
+.redSide{
+        background-color:#F6CECE;
+}
+
+.tabPatch{
+        width:40px;
+}
+
+#filterBlueSide{
+    float:left;
+}
+
+#filterRedSide{
+
+}
+
+label{
+display:inline-block;
+width: 60px;
+  text-align: left;
+}

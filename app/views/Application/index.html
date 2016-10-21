@@ -1,0 +1,117 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+<h3>Bienvenue sur Pro History</h3>
+
+
+<div id="searchNoFilter">
+<h4>Formulaire de recherche sans filtre</h4>
+<form action=@{Application.searchNoFilter} method="get">
+    <select name="searchForm.champ" id="searchChamp">
+        #{render 'tags/dropDownChamp.html'/}
+    </select>
+<input type="submit" value="A l'arrache !"/>
+</form>
+</div>
+
+<div id="searchWithFilters">
+<h4>Formulaire de recherche avec filtre</h4>
+<form action=@{Application.search} method="get">
+
+    <div id="filterBlueSide">
+    <label>Top</label> <select name="searchForm.btop" class="selectBlueSide">
+        #{render 'tags/dropDownChamp.html'/}
+    </select><br/>
+    <label>Jungle</label> <select name="searchForm.bJungle" class="selectBlueSide">
+        #{render 'tags/dropDownChamp.html'/}
+    </select><br/>
+    <label>Mid</label> <select name="searchForm.bMid" class="selectBlueSide">
+        #{render 'tags/dropDownChamp.html'/}
+    </select><br/>
+    <label>Adc</label><select name="searchForm.bAdc" class="selectBlueSide">
+        #{render 'tags/dropDownChamp.html'/}
+    </select><br/>
+    <label>Support</label> <select name="searchForm.bSupport" class="selectBlueSide">
+        #{render 'tags/dropDownChamp.html'/}
+    </select>
+    </div>
+
+    <div id="filterRedSide">
+    Top <select name="searchForm.rTop" class="selectRedSide">
+        #{render 'tags/dropDownChamp.html'/}
+    </select><br/>
+    Jungle <select name="searchForm.rJungle" class="selectRedSide">
+        #{render 'tags/dropDownChamp.html'/}
+    </select><br/>
+    Mid <select name="searchForm.rMid" class="selectRedSide">
+        #{render 'tags/dropDownChamp.html'/}
+    </select><br/>
+    Adc <select name="searchForm.rAdc" class="selectRedSide">
+        #{render 'tags/dropDownChamp.html'/}
+    </select><br/>
+    Support <select name="searchForm.rSupport" class="selectRedSide">
+        #{render 'tags/dropDownChamp.html'/}
+    </select>
+    </div>
+
+    <select name="searchForm.patch" class="selectPatch">
+    </select>
+
+    <select name="searchForm.region" class="selectRegion">
+    </select>
+
+        <input type="submit" value="Rechercher"/>
+</form>
+</div>
+<script>
+        $('#searchChamp').val('${PostChamp}');
+</script>
+<div style="float:clear;"></div>
+<div id="tabSize">
+<table class="" id="tab">
+    <tr>
+        <td class="tabRegion">Region</td>
+        <td class="tabPatch">Version</td>
+        <td>Vidéo</td>
+        <td>Matchup</td>
+        <td class="blueSide">Top</td>
+        <td class="blueSide">Jungle</td>
+        <td class="blueSide">Mid</td>
+        <td class="blueSide">Adc</td>
+        <td class="blueSide">Support</td>
+        <td class="blueSide tabBan">Bans</td>
+        <td class="redSide">Top</td>
+        <td class="redSide">Jungle</td>
+        <td class="redSide">Mid</td>
+        <td class="redSide">Adc</td>
+        <td class="redSide">Support</td>
+        <td class="redSide tabBan">Bans</td>
+        <td>Date</td>
+        <td class="tabGameName">Nom</td>
+
+
+    </tr>
+    #{list items:hs, as:'hs' }
+    <tr>
+        <td class="tabRegion">${hs.region}</td>
+        <td class="tabPatch">${hs.patch}</td>
+        <td><a href="${hs.gameLink}" target="_blank">voir la game</a></td>
+        <td >${hs.blueTeam} vs ${hs.redTeam}</td>
+        <td class="blueSide">${hs.bTop}</td>
+        <td class="blueSide">${hs.bJungle}	</td>
+        <td class="blueSide">${hs.bMid}	</td>
+        <td class="blueSide">${hs.bAdc}	</td>
+        <td class="blueSide">${hs.bSupport}</td>
+        <td class="tabBan blueSide">${hs.bBan1} - ${hs.bBan2} - ${hs.bBan3}</td>
+        <td class="redSide">${hs.rTop}</td>
+        <td class="redSide">${hs.rJungle}</td>
+        <td class="redSide">${hs.rMid}</td>
+        <td class="redSide">${hs.rAdc}</td>
+        <td class="redSide">${hs.rSupport}</td>
+        <td class="tabBan redSide">${hs.bBan1} - ${hs.bBan2} - ${hs.bBan3}</td>
+        <td>${hs.gameDate}</td>
+        <td class="tabGameName">${hs.gameName}</td>
+    </tr>
+    #{/list}
+</table>
+</div>
