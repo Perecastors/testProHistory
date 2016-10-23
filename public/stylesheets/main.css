@@ -1,13 +1,10 @@
 #tabSize{
         overflow-x : auto;
         font-size:13px;
-        <!--font-family:Arial;-->
-        float:right;
         margin-left : 450px;
 }
 
 #searchNoFilter{
- float:left;
 }
 
 #searchWithFilters{
@@ -21,16 +18,20 @@
  margin-right: 10px;
 }
 
-
-
 #tab{
-            width:2100px;
+            width:2500px;
             max-width:none;
 }
 
+.tabLink{
+    width:125px;
+}
+
 td{
-        width:100px;
+        width:150px;
         text-align:center;
+        padding-bottom:1px;
+        margin-bottom:1px;
 }
 
 .resetVal{
@@ -42,11 +43,21 @@ td{
 .tabBan{width:370px}
 
 .tabGameName{
-        width:780px;
+        width:800px;
 }
 
+.tabDate{
+        width:200px;
+}
+
+#tabSize tr:hover{
+    color : red;
+}
+
+
+
 .tabRegion{
-        width:80px;
+        width:100px;
 }
 
 .blueSide{
@@ -81,6 +92,18 @@ float:left;
 }
 
 label{
+display:inline-block;
+width: 125px;
+  text-align: left;
+}
+
+#filterBlueSide label{
+display:inline-block;
+width: 60px;
+  text-align: left;
+}
+
+#filterRedSide label{
 display:inline-block;
 width: 60px;
   text-align: left;

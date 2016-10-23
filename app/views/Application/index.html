@@ -1,96 +1,98 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
 
-<h3 align="center" style="margin-bottom:30px;"><a href="/">Bienvenue sur Pro History</a></h3>
-
+<h3 align="center" style="margin-bottom:5px;"><a href="/">Welcome to Pro History Search</a></h3>
+<h4 align="center" style="margin-bottom:20px;">${nbFoundGames} games found on ${nbTotalGames}</h4>
 <div id="searchBloc">
-<div align="center" id="searchNoFilter">
-<h4>Faire un recherche simple</h4>
-<form action=@{Application.searchNoFilter} method="get">
-    <img class="resetVal" src="/public/images/reset.png" alt="reset"/>
-    <select name="searchForm.champ" id="searchChamp">
-        #{render 'tags/dropDownChamp.html'/}
-    </select>
-<input type="submit" value="Anywhere !"/>
-</form>
-</div>
-<div style="clear:both;"></div>
-<div id="searchWithFilters">
-<h4>Recherche avancées</h4>
-<form action=@{Application.searchWithFilter} method="get">
+    <ul class="nav nav-tabs">
+        <li id="liSimpleSearch" class="active"><a data-toggle="tab" href="#simpleSearch">Basic Search</a></li>
+        <li id="liAdvancedSearch" ><a data-toggle="tab" href="#advancedSearch">Advanced Search</a></li>
+    </ul>
+    <div class="tab-content">
+        <div id="simpleSearch" class="tab-pane fade in active">
+            <div id="searchNoFilter">
+                <h4>Basic Search</h4>
+                <form action=@{Application.searchNoFilter} method="get">
 
-    <div id="filterBlueSide">
-    <label>Top</label> <select name="searchForm.bTop" id="searchFormbTop" class="selectBlueSide">
-        #{render 'tags/dropDownChamp.html'/}
-    </select><img class="resetVal" src="/public/images/reset.png" alt="reset"/><br/>
-    <label>Jungle</label> <select name="searchForm.bJungle" id="searchFormbJungle" class="selectBlueSide">
-        #{render 'tags/dropDownChamp.html'/}
-    </select><img class="resetVal" src="/public/images/reset.png" alt="reset"/><br/>
-    <label>Mid</label> <select name="searchForm.bMid" id="searchFormbMid" class="selectBlueSide">
-        #{render 'tags/dropDownChamp.html'/}
-    </select><img class="resetVal" src="/public/images/reset.png" alt="reset"/><br/>
-        <label>Adc</label><select name="searchForm.bAdc" id="searchFormbAdc" class="selectBlueSide" style="margin-left:4px;">
-        #{render 'tags/dropDownChamp.html'/}
-    </select><img class="resetVal" src="/public/images/reset.png" alt="reset"/><br/>
-    <label>Support</label> <select name="searchForm.bSupport" id="searchFormbSupport" class="selectBlueSide">
-        #{render 'tags/dropDownChamp.html'/}
-    </select><img class="resetVal" src="/public/images/reset.png" alt="reset"/>
+                    <label>Champion</label><select name="searchForm.champ" id="searchChamp">
+                        #{render 'tags/dropDownChamp.html'/}
+                    </select><img title="Reset Value" class="resetVal" src="/public/images/reset.png" alt="reset"/><br/>
+                        <label>From patch</label><select name="searchForm.patch" class="searchFormpatch" class="selectPatch">
+                        #{render 'tags/dropDownPatch.html'/}
+                    </select><br/>
+                        <label>Region</label><select name="searchForm.region" class="searchFormregion" class="selectRegion">
+                        #{render 'tags/dropDownregion.html'/}
+                    </select><br/>
+                    <input type="submit" value="Anywhere !"/>
+                </form>
+            </div>
+        </div>
+        <div id="advancedSearch" class="tab-pane fade">
+            <div id="searchWithFilters">
+                <h4 align="center">Advanced Search</h4>
+                <form action=@{Application.searchWithFilter} method="get">
+
+                    <div id="filterBlueSide">
+                        <label>Top</label> <select name="searchForm.bTop" id="searchFormbTop" class="selectBlueSide">
+                        #{render 'tags/dropDownbTop.html'/}
+                    </select><img title="Reset Value" class="resetVal" src="/public/images/reset.png" alt="reset"/><br/>
+                        <label>Jungle</label> <select name="searchForm.bJungle" id="searchFormbJungle" class="selectBlueSide">
+                        #{render 'tags/dropDownbJungle.html'/}
+                    </select><img title="Reset Value" class="resetVal" src="/public/images/reset.png" alt="reset"/><br/>
+                        <label>Mid</label> <select name="searchForm.bMid" id="searchFormbMid" class="selectBlueSide">
+                        #{render 'tags/dropDownbMid.html'/}
+                    </select><img title="Reset Value" class="resetVal" src="/public/images/reset.png" alt="reset"/><br/>
+                        <label>Adc</label><select name="searchForm.bAdc" id="searchFormbAdc" class="selectBlueSide" style="margin-left:4px;">
+                        #{render 'tags/dropDownbAdc.html'/}
+                    </select><img title="Reset Value" class="resetVal" src="/public/images/reset.png" alt="reset"/><br/>
+                        <label>Support</label> <select name="searchForm.bSupport" id="searchFormbSupport" class="selectBlueSide">
+                        #{render 'tags/dropDownbSupport.html'/}
+                    </select><img title="Reset Value" class="resetVal" src="/public/images/reset.png" alt="reset"/>
+                    </div>
+
+                    <div id="filterRedSide">
+                        <label>Top</label> <select name="searchForm.rTop" id="searchFormrTop" class="selectRedSide">
+                        #{render 'tags/dropDownrTop.html'/}
+                    </select><img title="Reset Value" class="resetVal" src="/public/images/reset.png" alt="reset"/><br/>
+                        <label>Jungle</label> <select name="searchForm.rJungle" id="searchFormrJungle" class="selectRedSide">
+                        #{render 'tags/dropDownrJungle.html'/}
+                    </select><img title="Reset Value" class="resetVal" src="/public/images/reset.png" alt="reset"/><br/>
+                        <label>Mid</label> <select name="searchForm.rMid" id="searchFormrMid" class="selectRedSide">
+                        #{render 'tags/dropDownrMid.html'/}
+                    </select><img title="Reset Value" class="resetVal" src="/public/images/reset.png" alt="reset"/><br/>
+                        <label>Adc</label> <select name="searchForm.rAdc" id="searchFormrAdc" class="selectRedSide" >
+                        #{render 'tags/dropDownrAdc.html'/}
+                    </select><img title="Reset Value" class="resetVal" src="/public/images/reset.png" alt="reset"/><br/>
+                        <label>Support</label> <select name="searchForm.rSupport" id="searchFormrSupport" class="selectRedSide">
+                        #{render 'tags/dropDownrSupport.html'/}
+                    </select><img title="Reset Value" class="resetVal" src="/public/images/reset.png" alt="reset"/>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <br/>
+                    <div id="filterAdditional">
+                        <div class="filterPatch">
+                            <label>From patch</label><select name="searchForm.patch" class="searchFormpatch" class="selectPatch">
+                            #{render 'tags/dropDownPatch.html'/}
+                        </select>
+                        </div>
+                        <div class="filterRegion">
+                            <label>Region</label><select name="searchForm.region" class="searchFormregion" class="selectRegion">
+                            #{render 'tags/dropDownRegion.html'/}
+                        </select>
+                        </div>
+                        <div>
+                            <input type="submit" value="Search"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 
-    <div id="filterRedSide">
-        <label>Top</label> <select name="searchForm.rTop" id="searchFormrTop" class="selectRedSide">
-        #{render 'tags/dropDownChamp.html'/}
-    </select><img class="resetVal" src="/public/images/reset.png" alt="reset"/><br/>
-        <label>Jungle</label> <select name="searchForm.rJungle" id="searchFormrJungle" class="selectRedSide">
-        #{render 'tags/dropDownChamp.html'/}
-    </select><img class="resetVal" src="/public/images/reset.png" alt="reset"/><br/>
-        <label>Mid</label> <select name="searchForm.rMid" id="searchFormrMid" class="selectRedSide">
-        #{render 'tags/dropDownChamp.html'/}
-    </select><img class="resetVal" src="/public/images/reset.png" alt="reset"/><br/>
-        <label>Adc</label> <select name="searchForm.rAdc" id="searchFormrAdc" class="selectRedSide" >
-        #{render 'tags/dropDownChamp.html'/}
-    </select><img class="resetVal" src="/public/images/reset.png" alt="reset"/><br/>
-        <label>Support</label> <select name="searchForm.rSupport" id="searchFormrSupport" class="selectRedSide">
-        #{render 'tags/dropDownChamp.html'/}
-    </select><img class="resetVal" src="/public/images/reset.png" alt="reset"/>
-    </div>
-    <div style="clear:both;"></div>
-    <br/>
-    <div id="filterAdditional">
-        <div id="filterPatch">
-        <label>Patch</label><select name="searchForm.patch" id="searchFormpatch" class="selectPatch">
-        #{render 'tags/dropDownPatch.html'/}
-        </select>
-        </div>
-        <div id="filterRegion">
-            <label>Région</label><select name="searchForm.region" id="searchFormregion" class="selectRegion">
-            #{render 'tags/dropDownRegion.html'/}
-        </select>
-        </div>
-        <div>
-            <input type="submit" value="Rechercher"/>
-        </div>
-    </div>
-</form>
-</div>
 </div>
 
 <script>
-        $(".resetVal").click(function(event) {
-        var idToReset = $(this).prev().attr("id");
-        if(idToReset == undefined)
-        {
-            idToReset = $(this).next().attr("id");
-        }
-        $('#'+idToReset).val("");
-        });
-
-        $('#tabSize').DataTable( {
-        "scrollY": 200,
-        "scrollX": true
-    } );
-} );
-
+        //Populate dropdown
         $('#searchChamp').val('${PostChamp}');
         $('#searchFormbTop').val('${PostbTop}');
         $('#searchFormbJungle').val('${PostbJungle}');
@@ -102,15 +104,16 @@
         $('#searchFormrMid').val('${PostrMid}');
         $('#searchFormrAdc').val('${PostrAdc}');
         $('#searchFormrSupport').val('${PostrSupport}');
-        $('#searchFormpatch').val('${Postpatch}');
-        $('#searchFormregion').val('${Postregion}');
+        $('.searchFormpatch').val('${Postpatch}');
+        $('.searchFormregion').val('${Postregion}');
 </script>
+#{if hs.size() > 0}
 <div id="tabSize">
 <table class="" id="tab">
-    <tr>
+    <tr style="font-weight:bold;border:2px solid;">
         <td class="tabRegion">Region</td>
         <td class="tabPatch">Version</td>
-        <td>Vidéo</td>
+        <td>Video</td>
         <td>Matchup</td>
         <td class="blueSide">Top</td>
         <td class="blueSide">Jungle</td>
@@ -125,15 +128,13 @@
         <td class="redSide">Support</td>
         <td class="redSide tabBan">Bans</td>
         <td>Date</td>
-        <td class="tabGameName">Nom</td>
-
-
+        <td class="tabGameName">Name</td>
     </tr>
     #{list items:hs, as:'hs' }
     <tr>
         <td class="tabRegion">${hs.region}</td>
         <td class="tabPatch">${hs.patch}</td>
-        <td><a href="${hs.gameLink}" target="_blank">voir la game</a></td>
+        <td class="tabLink"><a href="${hs.gameLink}" target="_blank">Watch game</a></td>
         <td >${hs.blueTeam} vs ${hs.redTeam}</td>
         <td class="blueSide">${hs.bTop}</td>
         <td class="blueSide">${hs.bJungle}	</td>
@@ -147,9 +148,10 @@
         <td class="redSide">${hs.rAdc}</td>
         <td class="redSide">${hs.rSupport}</td>
         <td class="tabBan redSide">${hs.bBan1} - ${hs.bBan2} - ${hs.bBan3}</td>
-        <td>${hs.gameDate}</td>
+        <td class="tabDate">${hs.gameDate.format('d MMMM y')}</td>
         <td class="tabGameName">${hs.gameName}</td>
     </tr>
     #{/list}
 </table>
 </div>
+#{/if}

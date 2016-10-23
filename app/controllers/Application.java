@@ -4,34 +4,39 @@ import org.joda.time.DateTime;
 import play.mvc.*;
 
 import models.*;
+import services.ParamService;
 import services.SearchService;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 public class Application extends Controller {
 
-    public static void index() {
+    @Before
+    private void getNumberTotal(){
+        int nbTotalGames = HistoryGame2.findAll().size();
+        ParamService.initDropDownList();
+        renderArgs.put("nbTotalGames", nbTotalGames);
+    }
 
-      /*  java.util.Date utilDate = new java.util.Date();
-        java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-        hss.gameDate = new java.sql.Date(utilDate.getTime());
-        hss.save();*/
-        List<HistoryGame2> hs = HistoryGame2.find("ORDER BY gameDate DESC ").fetch(45);
+    public static void index() {
+        List<HistoryGame2> hs = HistoryGame2.find("ORDER BY gameDate DESC ").fetch(50);
+        renderArgs.put("nbFoundGames", hs.size());
            render(hs);
     }
 
-    public static void search(SearchForm searchForm){
-        renderTemplate("Application/index.html",SearchService.searchNoFilter(searchForm));
-    }
-
     public static void searchNoFilter(SearchForm searchForm){
-        renderArgs.put("PostChamp", searchForm.champ);
         List<HistoryGame2> hs =SearchService.searchNoFilter(searchForm);
+        renderArgs.put("PostChamp", searchForm.champ);
+        renderArgs.put("Postpatch", searchForm.patch);
+        renderArgs.put("Postregion", searchForm.region);
+        renderArgs.put("nbFoundGames", hs.size());
         renderTemplate("Application/index.html",hs);
     }
     public static void searchWithFilter(SearchForm searchForm){
+        List<HistoryGame2> hs =SearchService.searchWithFilter(searchForm);
         renderArgs.put("PostbTop", searchForm.bTop);
         renderArgs.put("PostbJungle", searchForm.bJungle);
         renderArgs.put("PostbMid", searchForm.bMid);
@@ -44,8 +49,7 @@ public class Application extends Controller {
         renderArgs.put("PostrSupport", searchForm.rSupport);
         renderArgs.put("Postpatch", searchForm.patch);
         renderArgs.put("Postregion", searchForm.region);
-        List<HistoryGame2> hs =SearchService.searchWithFilter(searchForm);
+        renderArgs.put("nbFoundGames", hs.size());
         renderTemplate("Application/index.html",hs);
     }
-
 }
