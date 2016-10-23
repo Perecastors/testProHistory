@@ -31,5 +31,21 @@ public class Application extends Controller {
         List<HistoryGame2> hs =SearchService.searchNoFilter(searchForm);
         renderTemplate("Application/index.html",hs);
     }
+    public static void searchWithFilter(SearchForm searchForm){
+        renderArgs.put("PostbTop", searchForm.bTop);
+        renderArgs.put("PostbJungle", searchForm.bJungle);
+        renderArgs.put("PostbMid", searchForm.bMid);
+        renderArgs.put("PostbAdc", searchForm.bAdc);
+        renderArgs.put("PostbSupport", searchForm.bSupport);
+        renderArgs.put("PostrTop", searchForm.rTop);
+        renderArgs.put("PostrJungle", searchForm.rJungle);
+        renderArgs.put("PostrMid", searchForm.rMid);
+        renderArgs.put("PostrAdc", searchForm.rAdc);
+        renderArgs.put("PostrSupport", searchForm.rSupport);
+        renderArgs.put("Postpatch", searchForm.patch);
+        renderArgs.put("Postregion", searchForm.region);
+        List<HistoryGame2> hs =SearchService.searchWithFilter(searchForm);
+        renderTemplate("Application/index.html",hs);
+    }
 
 }
