@@ -1,11 +1,11 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
 
-<h3 align="center" style="margin-bottom:30px;">Bienvenue sur Pro History</h3>
+<h3 align="center" style="margin-bottom:30px;"><a href="/">Bienvenue sur Pro History</a></h3>
 
 <div id="searchBloc">
 <div align="center" id="searchNoFilter">
-<h4 >Formulaire de recherche sans filtre</h4>
+<h4>Faire un recherche simple</h4>
 <form action=@{Application.searchNoFilter} method="get">
     <img class="resetVal" src="/public/images/reset.png" alt="reset"/>
     <select name="searchForm.champ" id="searchChamp">
@@ -16,7 +16,7 @@
 </div>
 <div style="clear:both;"></div>
 <div id="searchWithFilters">
-<h4>Formulaire de recherche avec filtre</h4>
+<h4>Recherche avancées</h4>
 <form action=@{Application.searchWithFilter} method="get">
 
     <div id="filterBlueSide">
@@ -84,6 +84,12 @@
         }
         $('#'+idToReset).val("");
         });
+
+        $('#tabSize').DataTable( {
+        "scrollY": 200,
+        "scrollX": true
+    } );
+} );
 
         $('#searchChamp').val('${PostChamp}');
         $('#searchFormbTop').val('${PostbTop}');

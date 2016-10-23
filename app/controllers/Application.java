@@ -7,18 +7,18 @@ import models.*;
 import services.SearchService;
 
 import java.sql.Date;
+import java.util.Collection;
 import java.util.List;
 
 public class Application extends Controller {
 
     public static void index() {
 
-        HistoryGame2 hss = new HistoryGame2();
       /*  java.util.Date utilDate = new java.util.Date();
         java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
         hss.gameDate = new java.sql.Date(utilDate.getTime());
         hss.save();*/
-        List<HistoryGame2> hs =  HistoryGame2.findAll();
+        List<HistoryGame2> hs = HistoryGame2.find("ORDER BY gameDate DESC ").fetch(45);
            render(hs);
     }
 

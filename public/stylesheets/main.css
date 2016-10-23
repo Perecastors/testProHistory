@@ -1,9 +1,9 @@
 #tabSize{
         overflow-x : auto;
-        overflow-y:auto;
         font-size:13px;
         <!--font-family:Arial;-->
         float:right;
+        margin-left : 450px;
 }
 
 #searchNoFilter{
@@ -15,8 +15,10 @@
 }
 
 #searchBloc{
+ position : fixed;
  float:left;
  margin-left:10px;
+ margin-right: 10px;
 }
 
 
@@ -44,7 +46,7 @@ td{
 }
 
 .tabRegion{
-        width:50px;
+        width:80px;
 }
 
 .blueSide{

@@ -16,7 +16,8 @@ public  class SearchService {
 
     public static List<HistoryGame2> searchNoFilter(SearchForm searchForm)
     {
-
+        if(searchForm.champ.isEmpty())
+            return HistoryGame2.find("ORDER BY gameDate DESC").fetch();
         return HistoryGame2.find("bTop = '" +searchForm.champ+
                 "' OR bJungle = '" +searchForm.champ+
                 "' OR bMid = '" +searchForm.champ+
