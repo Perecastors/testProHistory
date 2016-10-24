@@ -33,7 +33,8 @@ public class Application extends Controller {
         renderArgs.put("Postpatch", searchForm.patch);
         renderArgs.put("Postregion", searchForm.region);
         renderArgs.put("nbFoundGames", hs.size());
-        renderTemplate("Application/index.html",hs);
+        renderTemplate("Application/index.html",hs,searchForm);
+
     }
     public static void searchWithFilter(SearchForm searchForm){
         List<HistoryGame2> hs =SearchService.searchWithFilter(searchForm);
@@ -50,6 +51,6 @@ public class Application extends Controller {
         renderArgs.put("Postpatch", searchForm.patch);
         renderArgs.put("Postregion", searchForm.region);
         renderArgs.put("nbFoundGames", hs.size());
-        renderTemplate("Application/index.html",hs);
+        renderTemplate("Application/index.html",hs,searchForm);
     }
 }

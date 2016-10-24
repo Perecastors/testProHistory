@@ -1,8 +1,9 @@
 #{extends 'main.html' /}
-#{set title:'Home' /}
-
+#{set title:'Pro History' /}
+<div id="header">
 <h3 align="center" style="margin-bottom:5px;"><a href="/">Welcome to Pro History Search</a></h3>
 <h4 align="center" style="margin-bottom:20px;">${nbFoundGames} games found on ${nbTotalGames}</h4>
+</div>
 <div id="searchBloc">
     <ul class="nav nav-tabs">
         <li id="liSimpleSearch" class="active"><a data-toggle="tab" href="#simpleSearch">Basic Search</a></li>
@@ -11,9 +12,9 @@
     <div class="tab-content">
         <div id="simpleSearch" class="tab-pane fade in active">
             <div id="searchNoFilter">
-                <h4>Basic Search</h4>
+                #{set ObjectValueSelect:searchForm /}
+                <h4 style="text-align:center">Basic Search</h4>
                 <form action=@{Application.searchNoFilter} method="get">
-
                     <label>Champion</label><select name="searchForm.champ" id="searchChamp">
                         #{render 'tags/dropDownChamp.html'/}
                     </select><img title="Reset Value" class="resetVal" src="/public/images/reset.png" alt="reset"/><br/>
@@ -31,7 +32,6 @@
             <div id="searchWithFilters">
                 <h4 align="center">Advanced Search</h4>
                 <form action=@{Application.searchWithFilter} method="get">
-
                     <div id="filterBlueSide">
                         <label>Top</label> <select name="searchForm.bTop" id="searchFormbTop" class="selectBlueSide">
                         #{render 'tags/dropDownbTop.html'/}
@@ -90,23 +90,6 @@
     </div>
 
 </div>
-
-<script>
-        //Populate dropdown
-        $('#searchChamp').val('${PostChamp}');
-        $('#searchFormbTop').val('${PostbTop}');
-        $('#searchFormbJungle').val('${PostbJungle}');
-        $('#searchFormbMid').val('${PostbMid}');
-        $('#searchFormbAdc').val('${PostbAdc}');
-        $('#searchFormbSupport').val('${PostbSupport}');
-        $('#searchFormrTop').val('${PostrTop}');
-        $('#searchFormrJungle').val('${PostrJungle}');
-        $('#searchFormrMid').val('${PostrMid}');
-        $('#searchFormrAdc').val('${PostrAdc}');
-        $('#searchFormrSupport').val('${PostrSupport}');
-        $('.searchFormpatch').val('${Postpatch}');
-        $('.searchFormregion').val('${Postregion}');
-</script>
 #{if hs.size() > 0}
 <div id="tabSize">
 <table class="" id="tab">

@@ -2,6 +2,7 @@
         overflow-x : auto;
         font-size:13px;
         margin-left : 450px;
+        height:calc(100% -200px);
 }
 
 #searchNoFilter{

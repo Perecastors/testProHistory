@@ -14,3 +14,14 @@
         } else{
             $('#liSimpleSearch').children().trigger('click');
         }
+
+        $(window).on('resize',function(){
+           resizeTab();
+       }).trigger('resize');
+
+       function resizeTab(){
+            var sizeScreen = $(window).height();
+            var headerSize = $('#header').height()+50;
+            $('#tabSize').css('height',(sizeScreen-headerSize)+'px');
+        }
+
