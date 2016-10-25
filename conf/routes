@@ -6,6 +6,9 @@
 GET     /                                       Application.index
 GET     /search                                 Application.search
 GET     /searchNoFilter                         Application.searchNoFilter
+GET     /createProGame                          FormController.createProGame
+POST    /createProGame                          FormController.saveProGame
+POST    /confirmProGame                         FormController.confirmProGame
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

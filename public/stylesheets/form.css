@@ -1,0 +1,64 @@
+#blueSideForm{
+background-color: #81F7F3;
+ padding : 5px 5px 5px 5px;
+ float:left;
+ }
+ #redSideForm{
+ background-color:#F6CECE;
+ float:left;
+ margin-left :20px;
+  padding : 5px 5px 5px 5px;
+ }
+
+ #blueSideForm label{
+ display:inline-block;
+ width: 73px;
+   text-align: left;
+   margin-bottom: 4px;
+ }
+
+ #redSideForm label{
+ display:inline-block;
+ width: 70px;
+   text-align: left;
+   margin-bottom: 4px;
+ }
+
+ #additionalDataForm select,#additionalDataForm input{
+ margin-bottom:5px;
+ margin-top:5px;
+ }
+ #additionalDataForm label{
+   display:inline-block;
+   margin-left :20px;
+  text-align:left;
+  width: 80px;
+  margin-bottom: 4px;
+  }
+
+#addForm{
+  width:500px;
+}
+
+#textAreaForm textarea {
+   resize: none;
+   margin-left:4px;
+   font-size:13px;
+   font-family:Arial;
+   overflow-y: hidden;
+}
+
+.flexItems{
+display:flex;
+align-items:center;
+}
+
+#gameLinkForm{
+    width:350px;
+}
+
+#calendar{
+padding:2px;
+width:90px;
+margin-left:3px;
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="/public/stylesheets/main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Confirmation</title>
+</head>
+<body>
+<form method="post" action="/confirmProGame">
+    <div id="addForm">
+        <form action="/createProGame" method="post">
+            <div id="blueSideForm">
+                <label>Blue Team</label>
+                <input type="hidden" name="historyGame.blueTeam" value="${historyGame.blueTeam}">${historyGame.blueTeam}<br/>
+                <label>Top</label>
+                <input type="hidden" name="historyGame.bTop" value="${historyGame.bTop}">${historyGame.bTop}<br/>
+                <label>Jungle</label>
+                <input type="hidden" name="historyGame.bJungle" value="${historyGame.bJungle}">${historyGame.bJungle}<br/>
+                <label>Mid</label>
+                <input type="hidden" name="historyGame.bMid" value="${historyGame.bMid}">${historyGame.bMid}<br/>
+                <label>Adc</label>
+                <input type="hidden" name="historyGame.bAdc" value="${historyGame.bAdc}">${historyGame.bAdc}<br/>
+                <label>Support</label>
+                <input type="hidden" name="historyGame.bSupport" value="${historyGame.bSupport}">${historyGame.bSupport}<br/>
+                <label>Ban 1</label>
+                <input type="hidden" name="historyGame.bBan1" value="${historyGame.bBan1}">${historyGame.bBan1}<br/>
+                <label>Ban 2</label>
+                <input type="hidden" name="historyGame.bBan2" value="${historyGame.bBan2}">${historyGame.bBan2}<br/>
+                <label>Ban 3</label>
+                <input type="hidden" name="historyGame.bBan3" value="${historyGame.bBan3}">${historyGame.bBan3}<br/>
+            </div>
+            <div id="redSideForm">
+                <label>Red Team</label>
+                <input type="hidden" name="historyGame.redTeam" value="${historyGame.redTeam}">${historyGame.redTeam}<br/>
+                <label>Top</label>
+                <input type="hidden" name="historyGame.rTop" value="${historyGame.rTop}">${historyGame.rTop}<br/>
+                <label>Jungle</label>
+                <input type="hidden" name="historyGame.rJungle" value="${historyGame.rJungle}">${historyGame.rJungle}<br/>
+                <label>Mid</label>
+                <input type="hidden" name="historyGame.rMid" value="${historyGame.rMid}">${historyGame.rMid}<br/>
+                <label>Adc</label>
+                <input type="hidden" name="historyGame.rAdc" value="${historyGame.rAdc}">${historyGame.rAdc}<br/>
+                <label>Support</label>
+                <input type="hidden" name="historyGame.rSupport" value="${historyGame.rSupport}">${historyGame.rSupport}<br/>
+                <label>Ban 1</label>
+                <input type="hidden" name="historyGame.rBan1" value="${historyGame.rBan1}">${historyGame.rBan1}<br/>
+                <label>Ban 2</label>
+                <input type="hidden" name="historyGame.rBan2" value="${historyGame.rBan2}">${historyGame.rBan2}<br/>
+                <label>Ban 3</label>
+                <input type="hidden" name="historyGame.rBan3" value="${historyGame.rBan3}">${historyGame.rBan3}<br/>
+            </div>
+            <div style="clear:both"></div>
+            <br/>
+            <div id="additionalDataForm">
+                <label>Region</label>
+                <input type="hidden" name="historyGame.region" value="${historyGame.region}">${historyGame.region}<br/>
+                <label>Patch</label>
+                <input type="hidden" name="historyGame.patch" value="${historyGame.patch}">${historyGame.patch}<br/>
+                <div class="flexItems" id="textAreaForm">
+                    <label>Name</label>
+                    <input type="hidden" name="historyGame.gameName" value="${historyGame.gameName}">${historyGame.gameName}<br/>
+                </div>
+                <label>Video Link</label>
+                <input type="hidden" name="historyGame.gameLink" value="${historyGame.gameLink}">${historyGame.gameLink}<br/>
+                <div class="flexItems">
+                    <label>Date</label>
+                    <input type="hidden" name="historyGame.gameDate" value="${historyGame.gameDate?.format('yyyy-mm-dd')}">${historyGame.gameDate?.format('d MMMM y')}<br/>
+                </div>
+            </div>
+            <input type="submit" value="Confirm"/>
+        </form>
+    </div>
+</form>
+</body>
+</html>

@@ -2,7 +2,7 @@
 #{set title:'Pro History' /}
 <div id="header">
 <h3 align="center" style="margin-bottom:5px;"><a href="/">Welcome to Pro History Search</a></h3>
-<h4 align="center" style="margin-bottom:20px;">${nbFoundGames} games found on ${nbTotalGames}</h4>
+<h4 align="center" style="margin-bottom:20px;">${nbFoundGames} game${nbFoundGames.pluralize()} found on ${nbTotalGames}</h4>
 </div>
 <div id="searchBloc">
     <ul class="nav nav-tabs">
@@ -131,7 +131,7 @@
         <td class="redSide">${hs.rAdc}</td>
         <td class="redSide">${hs.rSupport}</td>
         <td class="tabBan redSide">${hs.bBan1} - ${hs.bBan2} - ${hs.bBan3}</td>
-        <td class="tabDate">${hs.gameDate.format('d MMMM y')}</td>
+        <td class="tabDate">${hs.gameDate?.format('d MMMM y')}</td>
         <td class="tabGameName">${hs.gameName}</td>
     </tr>
     #{/list}

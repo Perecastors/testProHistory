@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/public/stylesheets/form.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/public/datepicker-1.6.4-dist/css/bootstrap-datepicker.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="public/datepicker-1.6.4-dist/js/bootstrap-datepicker.js"></script>
+
+    <title>Add game</title>
+</head>
+<body>
+<div id="addForm">
+    <form action="/createProGame" method="post">
+        <div id="blueSideForm">
+            <label>Blue Team</label>
+            <input maxlength="3" style="height:21px;width:47px;text-transform: uppercase;" type="text" name="historyGame.blueTeam"><br/>
+            <label>Top</label>
+            <select name="historyGame.bTop">#{dropDownAllChamp/}</select> <br/>
+            <label>Jungle</label>
+            <select name="historyGame.bJungle">#{dropDownAllChamp/}</select> <br/>
+            <label>Mid</label>
+            <select name="historyGame.bMid">#{dropDownAllChamp/}</select> <br/>
+            <label>Adc</label>
+            <select name="historyGame.bAdc">#{dropDownAllChamp/}</select> <br/>
+            <label>Support</label>
+            <select name="historyGame.bSupport">#{dropDownAllChamp/}</select> <br/><br/>
+            <label>Ban 1</label>
+            <select name="historyGame.bBan1">#{dropDownAllChamp/}</select> <br/>
+            <label>Ban 2</label>
+            <select name="historyGame.bBan2">#{dropDownAllChamp/}</select> <br/>
+            <label>Ban 3</label>
+            <select name="historyGame.bBan3">#{dropDownAllChamp/}</select> <br/>
+        </div>
+        <div id="redSideForm">
+            <label>Red Team</label>
+            <input maxlength="3" style="height:21px;width:47px;text-transform: uppercase;" type="text" name="historyGame.redTeam"><br/>
+            <label>Top</label>
+            <select name="historyGame.rTop">#{dropDownAllChamp/}</select> <br/>
+            <label>Jungle</label>
+            <select name="historyGame.rJungle">#{dropDownAllChamp/}</select> <br/>
+            <label>Mid</label>
+            <select name="historyGame.rMid">#{dropDownAllChamp/}</select> <br/>
+            <label>Adc</label>
+            <select name="historyGame.rAdc">#{dropDownAllChamp/}</select> <br/>
+            <label>Support</label>
+            <select name="historyGame.rSupport">#{dropDownAllChamp/}</select> <br/><br/>
+            <label>Ban 1</label>
+            <select name="historyGame.rBan1">#{dropDownAllChamp/}</select> <br/>
+            <label>Ban 2</label>
+            <select name="historyGame.rBan2">#{dropDownAllChamp/}</select> <br/>
+            <label>Ban 3</label>
+            <select name="historyGame.rBan3">#{dropDownAllChamp/}</select> <br/>
+        </div>
+        <div style="clear:both"></div>
+        <br/>
+        <div id="additionalDataForm">
+            <label>Region</label>
+            <select name="historyGame.region">#{dropDownRegion/}</select> <br/>
+            <label>Patch</label>
+            <select name="historyGame.patch">#{dropDownpatch/}</select> <br/>
+            <div class="flexItems" id="textAreaForm">
+            <label>Name</label>
+                <textarea maxlength="100" rows="1" cols="49" name="historyGame.gameName"></textarea>
+            </div>
+            <label>Video Link</label>
+            <input type="text" id="gameLinkForm" name="historyGame.gameLink"/><br/>
+            <div class="flexItems">
+            <label>Date</label>
+            <input data-provide="datepicker" data-date-format="yyyy-mm-dd" id="calendar" class="datepicker" data-date-format="mm/dd/yyyy" type="text" name="historyGame.gameDate" />
+            <i>format : 'yyyy-mm-dd'</i>
+            </div>
+        </div>
+        <input style="float:right;" type="submit" value="Save"/>
+    </form>
+</div>
+<script>
+</script>
+</body>
+</html>
