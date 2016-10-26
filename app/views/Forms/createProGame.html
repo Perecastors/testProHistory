@@ -12,64 +12,67 @@
     <title>Add game</title>
 </head>
 <body>
+#{ifErrors}
+<strong style="margin-left:100px;;color:red">Some values are incorrect</strong>
+#{/ifErrors}
 <div id="addForm">
     <form action="/createProGame" method="post">
         <div id="blueSideForm">
-            <label>Blue Team</label>
-            <input maxlength="3" style="height:21px;width:47px;text-transform: uppercase;" type="text" name="historyGame.blueTeam"><br/>
-            <label>Top</label>
+            <label #{ifError 'historyGame.blueTeam'} style="color:red;" #{/ifError}>Blue Team</label>
+            <input value="${historyGame?.blueTeam}" maxlength="3" style="height:21px;width:47px;text-transform: uppercase;" type="text" name="historyGame.blueTeam"><br/>
+            <label #{ifError 'historyGame.bTop'} style="color:red;" #{/ifError}>Top</label>
             <select name="historyGame.bTop">#{dropDownAllChamp/}</select> <br/>
-            <label>Jungle</label>
+            <label #{ifError 'historyGame.bJungle'} style="color:red;" #{/ifError}>Jungle</label>
             <select name="historyGame.bJungle">#{dropDownAllChamp/}</select> <br/>
-            <label>Mid</label>
+            <label #{ifError 'historyGame.bMid'} style="color:red;" #{/ifError}>Mid</label>
             <select name="historyGame.bMid">#{dropDownAllChamp/}</select> <br/>
-            <label>Adc</label>
+            <label #{ifError 'historyGame.bAdc'} style="color:red;" #{/ifError}>Adc</label>
             <select name="historyGame.bAdc">#{dropDownAllChamp/}</select> <br/>
-            <label>Support</label>
+            <label #{ifError 'historyGame.bSupport'} style="color:red;" #{/ifError}>Support</label>
             <select name="historyGame.bSupport">#{dropDownAllChamp/}</select> <br/><br/>
-            <label>Ban 1</label>
+            <label #{ifError 'historyGame.bBan1'} style="color:red;" #{/ifError}>Ban 1</label>
             <select name="historyGame.bBan1">#{dropDownAllChamp/}</select> <br/>
-            <label>Ban 2</label>
+            <label #{ifError 'historyGame.bBan2'} style="color:red;" #{/ifError}>Ban 2</label>
             <select name="historyGame.bBan2">#{dropDownAllChamp/}</select> <br/>
-            <label>Ban 3</label>
+            <label #{ifError 'historyGame.bBan3'} style="color:red;" #{/ifError}>Ban 3</label>
             <select name="historyGame.bBan3">#{dropDownAllChamp/}</select> <br/>
         </div>
         <div id="redSideForm">
-            <label>Red Team</label>
-            <input maxlength="3" style="height:21px;width:47px;text-transform: uppercase;" type="text" name="historyGame.redTeam"><br/>
-            <label>Top</label>
+            <label #{ifError 'historyGame.redTeam'} style="color:red;" #{/ifError}>Red Team</label>
+            <input value="${historyGame?.redTeam}" maxlength="3" style="height:21px;width:47px;text-transform: uppercase;" type="text" name="historyGame.redTeam"><br/>
+            <label #{ifError 'historyGame.rTop'} style="color:red;" #{/ifError}>Top</label>
             <select name="historyGame.rTop">#{dropDownAllChamp/}</select> <br/>
-            <label>Jungle</label>
+            <label #{ifError 'historyGame.rJungle'} style="color:red;" #{/ifError}>Jungle</label>
             <select name="historyGame.rJungle">#{dropDownAllChamp/}</select> <br/>
-            <label>Mid</label>
+            <label #{ifError 'historyGame.rMid'} style="color:red;" #{/ifError}>Mid</label>
             <select name="historyGame.rMid">#{dropDownAllChamp/}</select> <br/>
-            <label>Adc</label>
+            <label #{ifError 'historyGame.rAdc'} style="color:red;" #{/ifError}>Adc</label>
             <select name="historyGame.rAdc">#{dropDownAllChamp/}</select> <br/>
-            <label>Support</label>
+            <label #{ifError 'historyGame.rSupport'} style="color:red;" #{/ifError}>Support</label>
             <select name="historyGame.rSupport">#{dropDownAllChamp/}</select> <br/><br/>
-            <label>Ban 1</label>
+            <label #{ifError 'historyGame.rBan1'} style="color:red;" #{/ifError}>Ban 1</label>
             <select name="historyGame.rBan1">#{dropDownAllChamp/}</select> <br/>
-            <label>Ban 2</label>
+            <label #{ifError 'historyGame.rBan2'} style="color:red;" #{/ifError}>Ban 2</label>
             <select name="historyGame.rBan2">#{dropDownAllChamp/}</select> <br/>
-            <label>Ban 3</label>
+            <label #{ifError 'historyGame.rBan3'} style="color:red;" #{/ifError}>Ban 3</label>
             <select name="historyGame.rBan3">#{dropDownAllChamp/}</select> <br/>
         </div>
         <div style="clear:both"></div>
         <br/>
         <div id="additionalDataForm">
-            <label>Region</label>
+            <label #{ifError 'historyGame.region'} style="color:red;" #{/ifError}>Region</label>
             <select name="historyGame.region">#{dropDownRegion/}</select> <br/>
-            <label>Patch</label>
+            <label #{ifError 'historyGame.patch'} style="color:red;" #{/ifError}>Patch</label>
             <select name="historyGame.patch">#{dropDownpatch/}</select> <br/>
             <div class="flexItems" id="textAreaForm">
-            <label>Name</label>
-                <textarea maxlength="100" rows="1" cols="49" name="historyGame.gameName"></textarea>
+                <label #{ifError 'historyGame.gameName'} style="color:red;" #{/ifError}>Name</label>
+                <textarea placeholder="e.g : Game 1 Semi Finals S6 EU LCS Summer 2016 Playoffs" maxlength="100" rows="1" cols="49" name="historyGame.gameName" value="${historyGame?.gameName}"></textarea>
             </div>
-            <label>Video Link</label>
-            <input type="text" id="gameLinkForm" name="historyGame.gameLink"/><br/>
+            <label #{ifError 'historyGame.gameLink'} style="color:red;" #{/ifError}>Video Link</label>
+            <input placeholder="e.g : https://www.youtube.com/watch?v=Th_jMrZvXPY" value="${historyGame?.gameLink}" type="text" id="gameLinkForm" name="historyGame.gameLink"/><br/>
             <div class="flexItems">
-            <label>Date</label>
-            <input data-provide="datepicker" data-date-format="yyyy-mm-dd" id="calendar" class="datepicker" data-date-format="mm/dd/yyyy" type="text" name="historyGame.gameDate" />
+            <label #{ifError 'historyGame.gameDate'} style="color:red;" #{/ifError}>Date</label>
+            <input value="${historyGame?.gameDate}" data-provide="datepicker" data-date-format="yyyy-mm-dd" id="calendar" class="datepicker" data-date-format="mm/dd/yyyy" type="text" name="historyGame.gameDate" />
             <i>format : 'yyyy-mm-dd'</i>
             </div>
         </div>
@@ -77,6 +80,35 @@
     </form>
 </div>
 <script>
+
+    setDropDownValue();
+    function setDropDownValue()
+    {
+        if ('${historyGame}' != '')
+        {
+            $("select[name='historyGame.bTop']").val('${historyGame?.bTop}');
+            $("select[name='historyGame.bJungle']").val('${historyGame?.bJungle}');
+            $("select[name='historyGame.bMid']").val('${historyGame?.bMid}');
+            $("select[name='historyGame.bAdc']").val('${historyGame?.bAdc}');
+            $("select[name='historyGame.bSupport']").val('${historyGame?.bSupport}');
+            $("select[name='historyGame.bBan1']").val('${historyGame?.bBan1}');
+            $("select[name='historyGame.bBan2']").val('${historyGame?.bBan2}');
+            $("select[name='historyGame.bBan3']").val('${historyGame?.bBan3}');
+
+            $("select[name='historyGame.rTop']").val('${historyGame?.rTop}');
+            $("select[name='historyGame.rJungle']").val('${historyGame?.rJungle}');
+            $("select[name='historyGame.rMid']").val('${historyGame?.rMid}');
+            $("select[name='historyGame.rAdc']").val('${historyGame?.rAdc}');
+            $("select[name='historyGame.rSupport']").val('${historyGame?.rSupport}');
+            $("select[name='historyGame.rBan1']").val('${historyGame?.rBan1}');
+            $("select[name='historyGame.rBan2']").val('${historyGame?.rBan2}');
+            $("select[name='historyGame.rBan3']").val('${historyGame?.rBan3}');
+
+            $("select[name='historyGame.patch']").val('${historyGame?.patch}');
+            $("select[name='historyGame.region']").val('${historyGame?.region}');
+        }
+         console.log('tata');
+    }
 </script>
 </body>
 </html>

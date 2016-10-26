@@ -2,6 +2,7 @@ package controllers;
 
 import models.HistoryGame2;
 import play.data.validation.Valid;
+import play.mvc.After;
 import play.mvc.Controller;
 
 /**
@@ -17,6 +18,7 @@ public class FormController extends Controller {
     public static void saveProGame(@Valid HistoryGame2 historyGame)
     {
         if(validation.hasErrors()) {
+            validation.keep();
             renderTemplate("Forms/createProGame.html",historyGame);
         }
         renderTemplate("Forms/saveProGame.html",historyGame);
@@ -26,5 +28,11 @@ public class FormController extends Controller {
     {
         historyGame.save();
         redirect("/");
+    }
+
+    @After
+    public static void clearValidation()
+    {
+        validation.clear();
     }
 }

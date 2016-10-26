@@ -1,5 +1,6 @@
 package models;
 
+import net.sf.oval.constraint.MinLength;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.joda.time.DateTime;
 import play.data.validation.Required;
@@ -14,72 +15,73 @@ import java.util.Date;
 @Entity
 public class HistoryGame2 extends Model {
 
-    @Required
+    @Required(message = "Blue Team cannot be empty")
     @NotEmpty
     public String blueTeam;
-    @Required
+    @Required(message = "Red Team cannot be empty")
     @NotEmpty
     public String redTeam;
-    @Required
+    @Required(message = "Blue Top cannot be empty")
     @NotEmpty
     public String bTop;
-    @Required
+    @Required(message = "Blue Jungle cannot be empty")
     @NotEmpty
     public String bJungle;
-    @Required
+    @Required(message = "Blue Mid cannot be empty")
     @NotEmpty
     public String bMid;
-    @Required
+    @Required(message = "Blue Adc cannot be empty")
     @NotEmpty
     public String bAdc;
-    @Required
+    @Required(message = "Blue Support cannot be empty")
     @NotEmpty
     public String bSupport;
-    @Required
+    @Required(message = "Blue Ban 1 cannot be empty")
     @NotEmpty
     public String bBan1;
-    @Required
+    @Required(message = "Blue Ban 2 cannot be empty")
     @NotEmpty
     public String bBan2;
-    @Required
+    @Required(message = "Blue Ban 3 cannot be empty")
     @NotEmpty
     public String bBan3;
-    @Required
+    @Required(message = "Red Top cannot be empty")
     @NotEmpty
     public String rTop;
-    @Required
+    @Required(message = "Red Jungle cannot be empty")
     @NotEmpty
     public String rJungle;
-    @Required
+    @Required(message = "Red Mid cannot be empty")
     @NotEmpty
     public String rMid;
-    @Required
+    @Required(message = "Red Adc cannot be empty")
     @NotEmpty
     public String rAdc;
-    @Required
+    @Required(message = "Red Support cannot be empty")
     @NotEmpty
     public String rSupport;
-    @Required
+    @Required(message = "Red Ban 1 cannot be empty")
     @NotEmpty
     public String rBan1;
-    @Required
+    @Required(message = "Red Ban 2 cannot be empty")
     @NotEmpty
     public String rBan2;
-    @Required
+    @Required(message = "Red Ban 3 cannot be empty")
     @NotEmpty
     public String rBan3;
-    @Required
+    @Required(message = "You must put a valid game name")
     @NotEmpty
+    @MinLength(value = 15,message ="write at lease 15 charactere to describe the game")
     public String gameName;
-    @Required
+    @Required(message = "You must put a valid link")
     @NotEmpty
     public String gameLink;
-    @Required
+    @Required(message = "You must choose a valid region")
     @NotEmpty
     public String region;
-    @Required
+    @Required(message = "You must choose a valid patch")
     @NotEmpty
     public String patch;
-    @Required
+    @Required(message = "You must set a valid date")
     public Date gameDate;
 }

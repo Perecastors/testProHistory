@@ -22,7 +22,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="MavenModule" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -48,16 +47,8 @@
     <option name="USE_PROJECT_PROFILE" value="true" />
     <version value="1.0" />
   </component>
-  <component name="MavenProjectsManager">
-    <option name="originalFiles">
-      <list>
-        <option value="$PROJECT_DIR$/MavenModule/pom.xml" />
-      </list>
-    </option>
-  </component>
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/MavenModule/MavenModule.iml" filepath="$PROJECT_DIR$/MavenModule/MavenModule.iml" />
       <module fileurl="file://$PROJECT_DIR$/PH.iml" filepath="$PROJECT_DIR$/PH.iml" />
     </modules>
   </component>
