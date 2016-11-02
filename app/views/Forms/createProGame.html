@@ -13,13 +13,20 @@
 </head>
 <body>
 #{ifErrors}
-<strong style="margin-left:100px;;color:red">Some values are incorrect</strong>
+<strong style="margin-left:150px;margin-top:5px;color:red">Some values are incorrect</strong>
 #{/ifErrors}
+#{if flash.fail}
+<strong style="margin-left:146px;margin-top:5px;color:red">Record Failed - Contact the support</strong>
+#{/if}
+#{if flash.success}
+<strong style="margin-left:193px;margin-top:5px;color:green">Record Successful</strong>
+#{/if}
+
 <div id="addForm">
     <form action="/createProGame" method="post">
         <div id="blueSideForm">
             <label #{ifError 'historyGame.blueTeam'} style="color:red;" #{/ifError}>Blue Team</label>
-            <input value="${historyGame?.blueTeam}" maxlength="3" style="height:21px;width:47px;text-transform: uppercase;" type="text" name="historyGame.blueTeam"><br/>
+            <input value="${historyGame?.blueTeam}" maxlength="3" style="height:21px;width:47px;text-transform: uppercase;" type="text" name="historyGame.blueTeam">&nbsp;<i style="font-size:11px;">3 letters max</i><br/>
             <label #{ifError 'historyGame.bTop'} style="color:red;" #{/ifError}>Top</label>
             <select name="historyGame.bTop">#{dropDownAllChamp/}</select> <br/>
             <label #{ifError 'historyGame.bJungle'} style="color:red;" #{/ifError}>Jungle</label>
@@ -39,7 +46,7 @@
         </div>
         <div id="redSideForm">
             <label #{ifError 'historyGame.redTeam'} style="color:red;" #{/ifError}>Red Team</label>
-            <input value="${historyGame?.redTeam}" maxlength="3" style="height:21px;width:47px;text-transform: uppercase;" type="text" name="historyGame.redTeam"><br/>
+            <input value="${historyGame?.redTeam}" maxlength="3" style="height:21px;width:47px;text-transform: uppercase;" type="text" name="historyGame.redTeam">&nbsp;<i style="font-size:11px;">3 letters max</i><br/>
             <label #{ifError 'historyGame.rTop'} style="color:red;" #{/ifError}>Top</label>
             <select name="historyGame.rTop">#{dropDownAllChamp/}</select> <br/>
             <label #{ifError 'historyGame.rJungle'} style="color:red;" #{/ifError}>Jungle</label>

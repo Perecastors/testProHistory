@@ -4,11 +4,11 @@
 <h3 align="center" style="margin-bottom:5px;"><a href="/">Welcome to Pro History Search</a></h3>
 <h4 align="center" style="margin-bottom:20px;">${nbFoundGames} game${nbFoundGames.pluralize()} found on ${nbTotalGames}</h4>
 </div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/createProGame">Insert new game</a>
 <div id="searchBloc">
     <ul class="nav nav-tabs">
         <li id="liSimpleSearch" class="active"><a data-toggle="tab" href="#simpleSearch">Basic Search</a></li>
         <li id="liAdvancedSearch" ><a data-toggle="tab" href="#advancedSearch">Advanced Search</a></li>
+        <li><a data-toggle="tab" href="@{FormController.createProGame}" id="popup">Add Game</a></li>
     </ul>
     <div class="tab-content">
         <div id="simpleSearch" class="tab-pane fade in active">
@@ -116,6 +116,7 @@
     </tr>
     #{list items:hs, as:'hs' }
     <tr>
+        <input type="hidden" value="${hs.id}">
         <td class="tabRegion">${hs.region}</td>
         <td class="tabPatch">${hs.patch}</td>
         <td class="tabLink"><a href="${hs.gameLink}" target="_blank">Watch game</a></td>

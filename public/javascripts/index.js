@@ -19,6 +19,11 @@
            resizeTab();
        }).trigger('resize');
 
+       $('#popup').click(function (event) {
+           event.preventDefault();
+           window.open($(this).attr("href"), "popupWindow", "width=540,height=510,scrollbars=yes,toolbar=no");
+       });
+
        function resizeTab(){
             var sizeScreen = $(window).height();
             var headerSize = $('#header').height()+50;
