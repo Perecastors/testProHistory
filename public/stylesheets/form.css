@@ -45,6 +45,7 @@ background-color: #81F7F3;
 
 #addForm{
   width:500px;
+  float:left;
 }
 
 #textAreaForm textarea {
@@ -68,4 +69,47 @@ align-items:center;
 padding:2px;
 width:90px;
 margin-left:3px;
+}
+
+
+#searchVideo {
+float:left;
+margin-left:50px;
+}
+
+#videoPlayer {
+margin-top:5px;
+border : 1px solid black;
+height:315px;
+width:560px;
+}
+
+#searchResult{
+float:left;
+margin-top:5px;
+border : 1px solid black;
+height:415px;
+width:210px;
+overflow:auto;
+margin-left: 10px;
+}
+
+.imgYT{
+width:100px;
+margin-left:40px;
+}
+
+.listYT{
+float:left;
+margin:3px 0px 5px 7px;
+}
+
+#results{
+overflow:hidden;
+}
+
+.textResult{
+width:185px;
+overflow:hidden;
+height:63px;
 }

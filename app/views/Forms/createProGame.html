@@ -11,6 +11,9 @@
 
     <title>Add game</title>
 </head>
+<header style="text-align:center">
+    <h2>Add new games</h2>
+</header>
 <body>
 #{ifErrors}
 <strong style="margin-left:150px;margin-top:5px;color:red">Some values are incorrect</strong>
@@ -86,8 +89,17 @@
         <input style="float:right;" type="submit" value="Save"/>
     </form>
 </div>
+<div id="searchVideo">
+    <form onsubmit="searchVideo();return false;">
+Youtube search engine : <input type="text" id="searchQuery" /><input type="submit" value="Search">
+    </form>
+    <div id="videoPlayer">
+    </div>
+</div>
+<div id="searchResult">
+    <div id="results"></div>
+</div>
 <script>
-
     setDropDownValue();
     function setDropDownValue()
     {
@@ -114,7 +126,90 @@
             $("select[name='historyGame.patch']").val('${historyGame?.patch}');
             $("select[name='historyGame.region']").val('${historyGame?.region}');
         }
-         console.log('tata');
+    }
+
+      var tag = document.createElement('script');
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      // 3. This function creates an <iframe> (and YouTube player)
+      //    after the API code downloads.
+      var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('videoPlayer', {
+          height: '315',
+          width: '560',
+          videoId: '',
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+
+      // 4. The API will call this function when the video player is ready.
+      function onPlayerReady(event) {
+        event.target.playVideo();
+      }
+
+      // 5. The API calls this function when the player's state changes.
+      //    The function indicates that when playing a video (state=1),
+      //    the player should play for six seconds and then stop.
+      var done = false;
+      function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PLAYING && !done) {
+          setTimeout(stopVideo, 6000);
+          done = true;
+        }
+      }
+      function stopVideo() {
+        player.stopVideo();
+      }
+var relatedVideoId='';
+    function searchVideo(relatedVideoId){
+
+        //Clear results
+        $('#results').html('');
+        $('#buttons').html('');
+
+        //get form value
+        q = $('#searchQuery').val();
+
+        //Ajax call
+        $.get(
+            "https://www.googleapis.com/youtube/v3/search",
+            {
+                part:'snippet',
+                q:q,
+                type:'video',
+                key:'AIzaSyBJXjYXnKP3XQoWqJzQosj3dziDAYbdmB0',
+                maxResults:5,
+                relatedToVideoId:relatedVideoId
+            },
+            function(data){
+                console.log(data);
+
+                $.each(data.items,function(i,item){
+
+                    var output = getOutput(item);
+
+                    $('#results').append(output);
+                });
+            });
+    }
+
+    function getOutput(item){
+        var videoId = ''+item.id.videoId;
+        var thumb = item.snippet.thumbnails.high.url;
+        var title = item.snippet.title;
+
+        var output = '' + '<div class="listYT">' +
+        '<img class="imgYT" onclick="javascript:player.loadVideoById(\''+videoId+'\');searchVideo(\''+videoId+'\');" src="'+thumb+'">'+
+        '<div class="textResult" onclick="javascript:player.loadVideoById(\''+videoId+'\');searchVideo(\''+videoId+'\');">'+title+'</div>' +
+        '</div>';
+
+        return output;
     }
 </script>
 </body>
