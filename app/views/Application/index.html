@@ -8,7 +8,7 @@
     <ul class="nav nav-tabs">
         <li id="liSimpleSearch" class="active"><a data-toggle="tab" href="#simpleSearch">Basic Search</a></li>
         <li id="liAdvancedSearch" ><a data-toggle="tab" href="#advancedSearch">Advanced Search</a></li>
-        <li><a data-toggle="tab" href="@{FormController.createProGame}" id="popuep" target="_blank">Add Game</a></li>
+        <li><a href="@{FormController.createProGame}" id="popuep" target="_blank">Add Game</a></li>
     </ul>
     <div class="tab-content">
         <div id="simpleSearch" class="tab-pane fade in active">
@@ -23,7 +23,7 @@
                         #{render 'tags/dropDownPatch.html'/}
                     </select><br/>
                         <label>Region</label><select name="searchForm.region" class="searchFormregion" class="selectRegion">
-                        #{render 'tags/dropDownRegion.html'/}
+                        #{render 'tags/dropDownregion.html'/}
                     </select><br/>
                     <input type="submit" value="Anywhere !"/>
                 </form>
