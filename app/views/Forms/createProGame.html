@@ -73,7 +73,7 @@
             <label #{ifError 'historyGame.region'} style="color:red;" #{/ifError}>Region</label>
             <select name="historyGame.region">#{dropDownRegion/}</select> <br/>
             <label #{ifError 'historyGame.patch'} style="color:red;" #{/ifError}>Patch</label>
-            <select name="historyGame.patch">#{dropDownpatch/}</select> <br/>
+            <select name="historyGame.patch">#{dropDownPatch/}</select> <br/>
             <div class="flexItems" id="textAreaForm">
                 <label #{ifError 'historyGame.gameName'} style="color:red;" #{/ifError}>Name</label>
                 <textarea placeholder="e.g : Game 1 Semi Finals S6 EU LCS Summer 2016 Playoffs" maxlength="100" rows="1" cols="49" name="historyGame.gameName" value="${historyGame?.gameName}"></textarea>

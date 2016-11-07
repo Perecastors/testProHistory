@@ -18,7 +18,7 @@ import java.util.TreeSet;
 public class ParamService {
 
     static String root = System.getProperty("user.dir");
-    static String[] tabLane = new String[]{"bTop","bJungle","bMid","bAdc","bSupport","rTop","rJungle","rMid","rAdc","rSupport","region","champ"};
+    static String[] tabLane = new String[]{"bTop","bJungle","bMid","bAdc","bSupport","rTop","rJungle","rMid","rAdc","rSupport","Region","champ"};
     static HashSet<String> listAllChamp = new HashSet<>();
     public static void initDropDownList() {
         for(String lane:tabLane) {
