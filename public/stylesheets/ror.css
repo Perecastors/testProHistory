@@ -1,0 +1,121 @@
+body.accueil{
+    margin:0;
+    padding:0;
+    background: url(http://img0.ndsstatic.com/wallpapers/1707897919270d8fe9ceff4dd335cc81_large.jpeg) no-repeat center fixed;
+    -webkit-background-size: cover; /* pour Chrome et Safari */
+    -moz-background-size: cover; /* pour Firefox */
+    -o-background-size: cover; /* pour Opera */
+    background-size: cover; /* version standardisée */
+}
+
+a.accueil{
+    color: white;
+    font-size:large;
+    display:block;
+    text-align:center;
+    margin-top: 19px;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+div.tableau{
+    margin-left: auto;
+    margin-right: auto;
+    width: 301px;
+}
+
+div.col{
+
+    width: 60px;
+    text-align:center;
+    border-right: 1px solid red;
+    float:left;
+}
+
+div.col0{
+
+    width: 100px;
+    text-align:center;
+    float:left;
+}
+
+div.tableauGrand{
+    width: 600px;
+}
+
+div.colGrande{
+
+    width: 200px;
+    float:left;
+}
+
+div.col1{
+
+    width: 61px;
+    text-align:center;
+    border-left: 1px solid red;
+    border-right: 1px solid red;
+    float:left;
+}
+
+div.ligne1{
+
+    width: 100%;
+    text-align:center;
+    border-top: 1px solid red;
+    border-bottom: 1px solid red;
+}
+
+div.ligne{
+    width: 100%;
+    height: 60px;
+    text-align:center;
+    border-bottom: 1px solid red;
+}
+
+div.ligneH{
+    width: 100%;
+    text-align:center;
+    border-bottom: 1px solid red;
+}
+
+img.ligne{
+    width: 59px;
+    height: 59px;
+    align:center;
+}
+
+img.modif{
+    width: 80px;
+    height: 80px;
+}
+
+img.icone{
+    position: absolute;
+    width:100px;
+    display: none;
+}
+
+.conteneur {
+    position: relative;
+    display: inline-block;
+}
+
+.conteneur:hover .icone {
+    display: block;
+}
+
+.conteneur:hover .modif {
+    width:100px;
+    height:100px;
+}
+
+.icone {
+    top: 20px;
+    left: 0px;
+    position: absolute;
+    width:50%;
+    display: none;
+}

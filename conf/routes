@@ -10,6 +10,15 @@ GET     /createProGame                          FormController.createProGame
 POST    /createProGame                          FormController.saveProGame
 POST    /confirmProGame                         FormController.confirmProGame
 
+
+#Route Aurelien
+GET    /ajouterChampion                         ChampionsController.create(ligne,preference,modeSuppression)
+POST   /ajouterChampion                         ChampionsController.save
+GET    /liste                                   ChampionsController.afficher
+GET    /deleteChampion                          ChampionsController.delete(id)
+POST   /changementPref                          ChampionsController.changementPreference
+
+
 # Ignore favicon requests
 GET     /favicon.ico                            404
 
