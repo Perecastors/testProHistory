@@ -18,23 +18,38 @@ import java.util.TreeSet;
 public class ParamService {
 
     static String root = System.getProperty("user.dir");
-    static String[] tabLane = new String[]{"bTop","bJungle","bMid","bAdc","bSupport","rTop","rJungle","rMid","rAdc","rSupport","region","champ"};
+    static String[] tabLane = new String[]{"bTop","bJungle","bMid","bAdc","bSupport","rTop","rJungle","rMid","rAdc","rSupport","region","champ","team"};
     static HashSet<String> listAllChamp = new HashSet<>();
     public static void initDropDownList() {
+        listAllChamp.clear();
         for(String lane:tabLane) {
             try {
                 try (BufferedWriter writer = Files.newBufferedWriter(Paths.get(root + "/app/views/tags/dropDown" + lane + ".html"))) {
                     writer.flush();
                     if(lane.equals("champ"))
                         writer.write(getAllDistinctChampionOnLane(lane));
-                    else
+                    else if(lane.equals("team"))
+                    {
+                        writer.write(getAllDistinctTeams());
+                    }
+                    else {
                         writer.write(getDistinctChampionOnLane(lane));
-
+                    }
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
+    }
+
+    private static String getAllDistinctTeams() {
+        List<String> hs = HistoryGame2.find("SELECT DISTINCT blueTeam from  "+HistoryGame2.class.getName()+ " ORDER BY blueTeam").fetch();
+        String createHtml = new String();
+        createHtml += "<option #{if ObjectValueSelect!=null && ObjectValueSelect.team == ''}selected='selected' #{/if} value=''>" + "--------" + "</option>\n";
+        for (String s : hs) {
+            createHtml += "<option #{if ObjectValueSelect!=null && ObjectValueSelect.team == '"+ s +"'}selected='selected' #{/if} value='" + s + "'>" + s + "</option>\n";
+        }
+        return createHtml;
     }
 
     private static String getDistinctChampionOnLane(String lane) {

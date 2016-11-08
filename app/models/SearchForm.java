@@ -10,4 +10,6 @@ import java.sql.Date;
 public class SearchForm extends HistoryGame2{
     @Transient
     public String champ;
+    @Transient
+    public String team;
 }

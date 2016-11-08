@@ -23,8 +23,15 @@ public  class SearchService {
                 createQuery += And + " patch >= " + searchForm.patch;
                 And = " AND ";
             }
-            if(!searchForm.region.isEmpty())
-                createQuery +=And+ " region = '"+searchForm.region+"'";
+            if(!searchForm.region.isEmpty()) {
+                createQuery += And + " region = '" + searchForm.region + "'";
+                And = " AND ";
+            }
+
+            if(!searchForm.team.isEmpty()) {
+                createQuery += And + "(blueTeam = '" + searchForm.team + "'";
+                createQuery += " OR redTeam = '" + searchForm.team + "')";
+            }
         }
         else{
             if(!searchForm.champ.isEmpty())
