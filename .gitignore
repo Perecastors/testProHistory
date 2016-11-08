@@ -25,3 +25,6 @@ public/stylesheets/jquery.modal.css
 tmp/bytecode/DEV/_play__framework_templates_tags_errors.tag
 tmp/bytecode/DEV/services.GameService
 tmp/classes/
+/tmp/
+/PH.ipr
+/PH.iml

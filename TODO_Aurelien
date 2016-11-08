@@ -1,0 +1,20 @@
+-savoir toutes les combinaisons possibles d'un pool de champion
+            -on peut appliquer des contraintes sur un groupe de champion précis(positif ou négatif)
+
+-avoir les meilleurs combinaisons possible en choisissant un point de depart ou un "groupe de point de depart"
+                -exemple 1 : meilleur combo possible en commancant par la jungle
+                -exemple 2 : meilleur combo possible en commancant par le groupe (jungle+support)
+
+-appliquer des filtres de maniere general pour les matchup sur les lanes
+    -si mon adversaire prend Poppy : je peux prendre Trundle ou Rumble ou Jayce ( par ordre de priorité)
+    -si mon adversaire prend Jax : Surtout ne pas prendre Shen ou Nasus ( par ordre de priorité)
+    -si mon adversaire prend (Zac+Viktor) : je peux prendre Ziggs ou Ahri
+    -si mon adversaire prend (Zac+Viktor) : Surtout ne pas prendre  Syndra ou Cassiopeia
+
+
+(pour plus tard)
+-Faire un battle de draft:
+        -choisir les bans
+        -choisir les pick en mode draft
+        -mettre un timer pour les draft
+
