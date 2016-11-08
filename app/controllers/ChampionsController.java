@@ -215,7 +215,7 @@ public class ChampionsController extends Controller {
             }
             else {
                 if (j == 1) {
-                    System.out.println("fin");
+                    //System.out.println("fin");
                     j=6;
                 }
                 else {
