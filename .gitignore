@@ -28,3 +28,16 @@ tmp/classes/
 /conf/application.conf
 /PH.ipr
 /PH.iml
+/app/views/tags/dropDownbMid.html
+/app/views/tags/dropDownbTop.html
+/app/views/tags/dropDownbJungle.html
+/app/views/tags/dropDownrMid.html
+/app/views/tags/dropDownbSupport.html
+/app/views/tags/dropDownrAdc.html
+/app/views/tags/dropDownteam.html
+/app/views/tags/dropDownrJungle.html
+/app/views/tags/dropDownrTop.html
+/app/views/tags/dropDownregion.html
+/app/views/tags/dropDownrSupport.html
+/app/views/tags/dropDownbAdc.html
+/app/views/tags/dropDownChamp.html
