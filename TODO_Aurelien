@@ -11,3 +11,16 @@
     -si mon adversaire prend (Zac+Viktor) : je peux prendre Ziggs ou Ahri
     -si mon adversaire prend (Zac+Viktor) : Surtout ne pas prendre  Syndra ou Cassiopeia
 
+-------------------------------------------------------------------------------------
+-changer le titre en "Edit #Lane#" : 5 min
+-quand je fais une action sur cette page , je reste sur cette page
+-refaire le design comme sur la maquette: 1h30
+           -replacer les champion a droite de la page par ordre de classement
+           -mettre une croix pour supprimer le champion
+                (cela rafraichit la page car il y a modification de classement)
+           -mettre un gros bouton (TRES GROS) pour activer le changement de classement
+                   -quand le changement est activé cela affiche une dropdown a coté des champion pour choisir le classement
+           -ce meme bouton permet de valider les changement
+
+
+
