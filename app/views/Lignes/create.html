@@ -5,7 +5,26 @@
 
 <a href="/">Retourner à l'accueil</a><br/>
 <a href="/liste">Retourner à la sélection</a>
-<br/><br/>
+
+<div>
+    #{list items:listeChampion, as:'champion'}
+    #{if champion.ligne.equals(ligne)}
+    <div style="clear:both" class="col0 conteneur">
+        <div class ="titreImageClassement" class="toggleClassement"># ${champion.preference} : ${champion.nom}</div>
+        <form class="toggleClassement" style="display: none" action="@{ChampionsController.changementPreference(champion.id)}" method="post">
+            <select name="champion.preference">
+                #{list items:1..preference, as:'i'}
+                <option value='${i}'>${i}</option>
+                #{/list}
+            </select>
+            <input type="submit" value="Ok">
+        </form>
+        <img class="modif" src=${champion.getUrlImage()} title="${champion.nom}" border="4">
+        <a class="toggleSuppression" style="display: none" href="@{ChampionsController.delete(champion.id,ligne,preference)}"><img class="icone" src="http://www.icone-png.com/png/19/18859.png" title="Retirer ${champion.nom} de la sélection"></a>
+    </div>
+    #{/if}
+    #{/list}
+</div>
 
 <div class="tableauGrand">
     <div class="colGrande">Ajouter un Champion
@@ -33,28 +52,13 @@
     </div>
 </div>
 
-<br/><br/><br/><br/><br/>
+<!--<div class="test">truc</div>-->
 
-<div class="toggleSuppression">Classement champions : </div>
-<div class="toggleSuppression" style="display: none">Sélectionner un champion à supprimer : </div>
-<br/>
-    #{list items:listeChampion, as:'champion'}
-    #{if champion.ligne.equals(ligne)}
-    <div class="col0 conteneur">
-        <div class ="titreImageClassement" class="toggleClassement"># ${champion.preference} : ${champion.nom}</div>
-        <form class="toggleClassement" style="display: none" action="@{ChampionsController.changementPreference(champion.id)}" method="post">
-            <select name="champion.preference">
-                #{list items:1..preference, as:'i'}
-                    <option value='${i}'>${i}</option>
-                #{/list}
-            </select>
-            <input type="submit" value="Ok">
-        </form>
-        <img class="modif" src=${champion.getUrlImage()} title="${champion.nom}" border="4">
-        <a class="toggleSuppression" style="display: none" href="@{ChampionsController.delete(champion.id,ligne,preference)}"><img class="icone" src="http://www.icone-png.com/png/19/18859.png" title="Retirer ${champion.nom} de la sélection"></a>
-    </div>
-    #{/if}
-    #{/list}
+<!--<br/><br/><br/><br/><br/>-->
+
+<div style="clear:both">
+    <div style="clear:both" class="toggleSuppression">Classement champions : </div>
+    <div class="toggleSuppression" style="display: none">Sélectionner un champion à supprimer : </div>
 </div>
 
 *{<!--<div class="conteneur">-->

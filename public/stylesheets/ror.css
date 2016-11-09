@@ -39,7 +39,14 @@ div.col0{
     width: 130px;
     height: 123px;
     text-align:center;
-    float:left;
+    float:right;
+}
+
+div.test{
+    width: 130px;
+    height: 123px;
+    text-align:center;
+    float:right;
 }
 
 div.tableauGrand{
