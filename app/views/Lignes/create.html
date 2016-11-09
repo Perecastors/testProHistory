@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:align="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/ror.css'}">
-    <title>save</title>
-</head>
 
-<body>
+#{extends 'mainRor.html'/}
+
+#{set title:'Edit ' + ligne /}
+
 <a href="/">Retourner à l'accueil</a><br/>
 <a href="/liste">Retourner à la sélection</a>
 <br/><br/>
@@ -55,7 +51,7 @@
             <input type="submit" value="Ok">
         </form>
         <img class="modif" src=${champion.getUrlImage()} title="${champion.nom}" border="4">
-        <a class="toggleSuppression" style="display: none" href="@{ChampionsController.delete(champion.id)}"><img class="icone" src="http://www.icone-png.com/png/19/18859.png" title="Retirer ${champion.nom} de la sélection"></a>
+        <a class="toggleSuppression" style="display: none" href="@{ChampionsController.delete(champion.id,ligne,preference)}"><img class="icone" src="http://www.icone-png.com/png/19/18859.png" title="Retirer ${champion.nom} de la sélection"></a>
     </div>
     #{/if}
     #{/list}
@@ -69,9 +65,6 @@
 <!--<img class="cachee" id="1" src="http://ddragon.leagueoflegends.com/cdn/6.20.1/img/champion/Aatrox.png" title="Aatrox" border="4">-->
 <!--<img class="cachee" id="2" src="http://ddragon.leagueoflegends.com/cdn/6.20.1/img/champion/Ahri.png" title="Ahri" border="4">-->}*
 
-<script src="https://johnny.github.io/jquery-sortable/js/jquery-sortable.js"></script>
-<script src="//code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
-<script src="@{'/public/javascripts/lol.js'}"></script>
-
-</body>
-</html>
+#{set 'moreScripts'}
+    #{script 'lol.js'/}
+#{/set}

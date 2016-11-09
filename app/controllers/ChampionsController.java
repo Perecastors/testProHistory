@@ -22,12 +22,12 @@ public class ChampionsController extends Controller {
 
     public static void save(Champion champion) {
         ChampionService.enregistrer(champion);
-        afficher();
+        create(champion.ligne,champion.preference+1);
     }
 
-    public static void delete(Long idChampion) {
+    public static void delete(Long idChampion,String ligne,int preference) {
         ChampionService.supprimer(idChampion);
-        afficher();
+        create(ligne,preference);
     }
 
     public static void changementPreference(Long idChampion, Champion champion) {
