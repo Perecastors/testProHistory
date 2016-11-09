@@ -73,7 +73,13 @@ public class ChampionsController extends Controller {
         {
             resultat.add(longueurLigne.get(i));
         }
-        resultat.add(Collections.max(longueurLigne));
+        List<Integer> listeTronquee = new ArrayList();
+        listeTronquee.add(longueurLigne.get(0));
+        listeTronquee.add(longueurLigne.get(2));
+        listeTronquee.add(longueurLigne.get(4));
+        listeTronquee.add(longueurLigne.get(6));
+        listeTronquee.add(longueurLigne.get(8));
+        resultat.add(Collections.max(listeTronquee));
         return resultat;
     }
 

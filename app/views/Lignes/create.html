@@ -45,7 +45,7 @@
     #{list items:listeChampion, as:'champion'}
     #{if champion.ligne.equals(ligne)}
     <div class="col0 conteneur">
-        <div class="toggleClassement"># ${champion.preference} : ${champion.nom}</div>
+        <div class ="titreImageClassement" class="toggleClassement"># ${champion.preference} : ${champion.nom}</div>
         <form class="toggleClassement" style="display: none" action="@{ChampionsController.changementPreference(champion.id)}" method="post">
             <select name="champion.preference">
                 #{list items:1..preference, as:'i'}
@@ -54,7 +54,7 @@
             </select>
             <input type="submit" value="Ok">
         </form>
-        <img class="modif" src="http://ddragon.leagueoflegends.com/cdn/6.20.1/img/champion/${champion.nom}.png" title="${champion.nom}" border="4">
+        <img class="modif" src=${champion.getUrlImage()} title="${champion.nom}" border="4">
         <a class="toggleSuppression" style="display: none" href="@{ChampionsController.delete(champion.id)}"><img class="icone" src="http://www.icone-png.com/png/19/18859.png" title="Retirer ${champion.nom} de la sélection"></a>
     </div>
     #{/if}
