@@ -14,30 +14,31 @@ public class Champion extends Model {
     public int preference;
 
     public String getUrlImage(){
+        String baseUrl = "http://ddragon.leagueoflegends.com/cdn/6.20.1/img/champion/";
         switch (nom){
             case "Leesin":
-                return "//ddragon.leagueoflegends.com/cdn/6.20.1/img/champion/LeeSin.png";
+                return baseUrl+"LeeSin.png";
             case "Reksai":
-                return "//ddragon.leagueoflegends.com/cdn/6.20.1/img/champion/RekSai.png";
+                return  baseUrl+"RekSai.png";
             case "Aurelion Sol":
-                return "//ddragon.leagueoflegends.com/cdn/6.20.1/img/champion/AurelionSol.png";
+                return baseUrl+"AurelionSol.png";
             case "Jarvan IV":
-                return "//ddragon.leagueoflegends.com/cdn/6.20.1/img/champion/JarvanIV.png";
+                return  baseUrl+"JarvanIV.png";
             case "KhaZix":
-                return "//ddragon.leagueoflegends.com/cdn/6.20.1/img/champion/Khazix.png";
+                return  baseUrl+"Khazix.png";
             case "Maitre Yi":
-                return "//ddragon.leagueoflegends.com/cdn/6.20.1/img/champion/MasterYi.png";
+                return  baseUrl+"MasterYi.png";
             case "Miss Fortune":
-                return "//ddragon.leagueoflegends.com/cdn/6.20.1/img/champion/MissFortune.png";
+                return baseUrl+"MissFortune.png";
             case "Tahm Kench":
-                return "//ddragon.leagueoflegends.com/cdn/6.20.1/img/champion/TahmKench.png";
+                return baseUrl+"TahmKench.png";
             case "Twisted Fate":
-                return "//ddragon.leagueoflegends.com/cdn/6.20.1/img/champion/TwistedFate.png";
+                return baseUrl+"TwistedFate.png";
             case "Xin Zhao":
-                return "//ddragon.leagueoflegends.com/cdn/6.20.1/img/champion/XinZhao.png";
+                return  baseUrl+"XinZhao.png";
             case "Kogmaw":
-                return "//ddragon.leagueoflegends.com/cdn/6.20.1/img/champion/KogMaw.png";
+                return baseUrl+"KogMaw.png";
         }
-        return "//ddragon.leagueoflegends.com/cdn/6.20.1/img/champion/"+nom+".png";
+        return baseUrl+nom+".png";
     }
 }
