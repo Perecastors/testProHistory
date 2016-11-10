@@ -12,7 +12,7 @@ POST    /confirmProGame                         FormController.confirmProGame
 
 
 #Route Aurelien
-GET    /ajouterChampion                         ChampionsController.create(ligne,preference)
+GET    /ajouterChampion                         ChampionsController.create(ligne,preference,nombreChampions)
 POST   /ajouterChampion                         ChampionsController.save
 GET    /liste                                   ChampionsController.afficher
 GET    /deleteChampion                          ChampionsController.delete(id)
