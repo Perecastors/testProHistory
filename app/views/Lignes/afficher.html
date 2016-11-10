@@ -6,7 +6,9 @@
 
 <br/><br/>
 
-<div class="tableau">
+
+<div class="tableau" id="tabPoolChamp">
+    Your champion Pool<br/>
     <div class="col1">
         <div class="ligne1"><strong>Top</strong><br/><a href="@{ChampionsController.create(ligne='Top',preference=tailleListes.get(1)+1)}">&{'Modifier'}</a></div>
         #{list items:listeChampion, as:'champion'}
@@ -74,18 +76,16 @@
     </div>
 </div>
 
-<div style="clear:both"></div>
 
-#{if poolChampions.size()>500}
-<br/><br/><br/>
-<div align="center">${poolChampions.size()/5} combinaisons possibles</div>
-<br/>
-<div align="center">${poolChampions.subList(0,500).size()/5} meilleures combinaisons :</div>
-<br/>
-<div class="tableau">
+#{if poolChampions.size()>200}
+<div class="tableau" id="tabComboChamp">
+    <div align="center">${poolChampions.size()/5} combinaisons possibles</div>
+    <br/>
+    <div align="center">${poolChampions.subList(0,200).size()/5} meilleures combinaisons :</div>
+    <br/>
     <div class="col1">
         <div class="ligne1"><strong>Top</strong></div>
-        #{list items:poolChampions.subList(0,500), as:'champion'}
+        #{list items:poolChampions.subList(0,200), as:'champion'}
             #{if champion.ligne.equals("Top")}
                 <div class="ligne"><img class="ligne" src=${champion.getUrlImage()} title="${champion.nom}" border="4"></div>
             #{/if}
@@ -93,7 +93,7 @@
     </div>
     <div class="col">
         <div class="ligne1"><strong>Jungle</strong></div>
-        #{list items:poolChampions.subList(0,500), as:'champion'}
+        #{list items:poolChampions.subList(0,200), as:'champion'}
         #{if champion.ligne.equals("Jungle")}
         <div class="ligne"><img class="ligne" src=${champion.getUrlImage()} title="${champion.nom}" border="4"></div>
         #{/if}
@@ -101,7 +101,7 @@
     </div>
     <div class="col">
         <div class="ligne1"><strong>Mid</strong></div>
-        #{list items:poolChampions.subList(0,500), as:'champion'}
+        #{list items:poolChampions.subList(0,200), as:'champion'}
         #{if champion.ligne.equals("Mid")}
         <div class="ligne"><img class="ligne" src=${champion.getUrlImage()} title="${champion.nom}" border="4"></div>
         #{/if}
@@ -109,7 +109,7 @@
     </div>
     <div class="col">
         <div class="ligne1"><strong>Adc</strong></div>
-        #{list items:poolChampions.subList(0,500), as:'champion'}
+        #{list items:poolChampions.subList(0,200), as:'champion'}
         #{if champion.ligne.equals("Adc")}
         <div class="ligne"><img class="ligne" src=${champion.getUrlImage()} title="${champion.nom}" border="4"></div>
         #{/if}
@@ -117,7 +117,7 @@
     </div>
     <div class="col">
         <div class="ligne1"><strong>Support</strong></div>
-        #{list items:poolChampions.subList(0,500), as:'champion'}
+        #{list items:poolChampions.subList(0,200), as:'champion'}
         #{if champion.ligne.equals("Support")}
         <div class="ligne"><img class="ligne" src=${champion.getUrlImage()} title="${champion.nom}" border="4"></div>
         #{/if}
@@ -126,7 +126,6 @@
 </div>
 #{/if}
 #{else}
-<br/><br/><br/>
 <div align="center">${poolChampions.size()/5} combinaisons possibles :</div>
 <br/>
 <div class="tableau">

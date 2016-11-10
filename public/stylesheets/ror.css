@@ -26,6 +26,17 @@ div.tableau{
     width: 301px;
 }
 
+#tabPoolChamp{
+float:left;
+margin-left: 15px;
+}
+
+
+#tabComboChamp{
+float:right;
+margin-right: 15px;
+}
+
 div.col{
 
     width: 60px;

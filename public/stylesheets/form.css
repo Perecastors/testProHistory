@@ -97,6 +97,7 @@ margin-left: 10px;
 .imgYT{
 width:100px;
 margin-left:40px;
+cursor:pointer;
 }
 
 .listYT{
@@ -112,4 +113,5 @@ overflow:hidden;
 width:185px;
 overflow:hidden;
 height:63px;
+cursor:pointer;
 }
