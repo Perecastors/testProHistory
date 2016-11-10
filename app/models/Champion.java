@@ -16,6 +16,8 @@ public class Champion extends Model {
     public String getUrlImage(){
         String baseUrl = "http://ddragon.leagueoflegends.com/cdn/6.20.1/img/champion/";
         switch (nom){
+            case "ChoGath":
+                return baseUrl+"Chogath.png";
             case "Leesin":
                 return baseUrl+"LeeSin.png";
             case "Reksai":
