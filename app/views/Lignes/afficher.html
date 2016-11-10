@@ -14,7 +14,7 @@
 <div class="tableau" id="tabPoolChamp">
     Your champion Pool<br/>
     <div class="col1">
-        <div class="ligne1"><strong>Top</strong><br/><a href="@{ChampionsController.create(ligne='Top',preference=tailleListes.get(1)+1,nombreChampions=tailleListes.get(0))}">&{'Modifier'}</a></div>
+        <div class="ligne1"><strong>Top</strong><br/><a href="@{ChampionsController.create(ligne='Top',preference=tailleListes.get(1)+1,nombreChampions=tailleListes)}">&{'Modifier'}</a></div>
         #{list items:listeChampion, as:'champion'}
         #{if champion.ligne.equals("Top")}
         <div class="ligne"><img class="ligne" src=${champion.getUrlImage()} title="${champion.nom}" border="4"></div>
@@ -27,7 +27,7 @@
         #{/if}
     </div>
     <div class="col">
-        <div class="ligne1"><strong>Jungle</strong><br/><a href="@{ChampionsController.create(ligne='Jungle',preference=tailleListes.get(3)+1,nombreChampions=tailleListes.get(2))}">&{'Modifier'}</a></div>
+        <div class="ligne1"><strong>Jungle</strong><br/><a href="@{ChampionsController.create(ligne='Jungle',preference=tailleListes.get(3)+1,nombreChampions=tailleListes)}">&{'Modifier'}</a></div>
         #{list items:listeChampion, as:'champion'}
         #{if champion.ligne.equals("Jungle")}
         <div class="ligne"><img class="ligne" src=${champion.getUrlImage()} title="${champion.nom}" border="4"></div>
@@ -40,7 +40,7 @@
         #{/if}
     </div>
     <div class="col">
-        <div class="ligne1"><strong>Mid</strong><br/><a href="@{ChampionsController.create(ligne='Mid',preference=tailleListes.get(5)+1,nombreChampions=tailleListes.get(4))}">&{'Modifier'}</a></div>
+        <div class="ligne1"><strong>Mid</strong><br/><a href="@{ChampionsController.create(ligne='Mid',preference=tailleListes.get(5)+1,nombreChampions=tailleListes)}">&{'Modifier'}</a></div>
         #{list items:listeChampion, as:'champion'}
         #{if champion.ligne.equals("Mid")}
         <div class="ligne"><img class="ligne" src=${champion.getUrlImage()} title="${champion.nom}" border="4"></div>
@@ -53,7 +53,7 @@
         #{/if}
     </div>
     <div class="col">
-        <div class="ligne1"><strong>Adc</strong><br/><a href="@{ChampionsController.create(ligne='Adc',preference=tailleListes.get(7)+1,nombreChampions=tailleListes.get(6))}">&{'Modifier'}</a></div>
+        <div class="ligne1"><strong>Adc</strong><br/><a href="@{ChampionsController.create(ligne='Adc',preference=tailleListes.get(7)+1,nombreChampions=tailleListes)}">&{'Modifier'}</a></div>
         #{list items:listeChampion, as:'champion'}
         #{if champion.ligne.equals("Adc")}
         <div class="ligne"><img class="ligne" src=${champion.getUrlImage()} title="${champion.nom}" border="4"></div>
@@ -66,7 +66,7 @@
         #{/if}
     </div>
     <div class="col">
-        <div class="ligne1"><strong>Support</strong><br/><a href="@{ChampionsController.create(ligne='Support',preference=tailleListes.get(9)+1,nombreChampions=tailleListes.get(8))}">&{'Modifier'}</a></div>
+        <div class="ligne1"><strong>Support</strong><br/><a href="@{ChampionsController.create(ligne='Support',preference=tailleListes.get(9)+1,nombreChampions=tailleListes)}">&{'Modifier'}</a></div>
         #{list items:listeChampion, as:'champion'}
         #{if champion.ligne.equals("Support")}
         <div class="ligne"><img class="ligne" src=${champion.getUrlImage()} title="${champion.nom}" border="4"></div>

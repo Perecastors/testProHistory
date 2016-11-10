@@ -15,24 +15,23 @@ import static java.lang.Integer.parseInt;
 
 public class ChampionsController extends Controller {
 
-    public static void create(String ligne, int preference,int nombreChampions) {
+    public static void create(String ligne, int preference,List<Integer> nombreChampions) {
         List<Champion> listeChampion = trier(ChampionService.getAllChampions());
         renderTemplate("/Lignes/create.html",ligne,preference,listeChampion,nombreChampions);
     }
 
-    public static void create(String ligne, int preference) {
-        List<Champion> listeChampion = trier(ChampionService.getAllChampions());
-        renderTemplate("/Lignes/create.html",ligne,preference,listeChampion);
-    }
-
     public static void save(Champion champion) {
         ChampionService.enregistrer(champion);
-        create(champion.ligne,champion.preference+1);
+        List<Champion> listeChampion = ChampionService.getAllChampions();
+        List<Integer> nombreChampions=getMaxValueLigne(listeChampion);
+        create(champion.ligne,champion.preference+1,nombreChampions);
     }
 
     public static void delete(Long idChampion,String ligne,int preference) {
         ChampionService.supprimer(idChampion);
-        create(ligne,preference);
+        List<Champion> listeChampion = ChampionService.getAllChampions();
+        List<Integer> nombreChampions=getMaxValueLigne(listeChampion);
+        create(ligne,preference,nombreChampions);
     }
 
     public static void changementPreference(Long idChampion, Champion champion) {
