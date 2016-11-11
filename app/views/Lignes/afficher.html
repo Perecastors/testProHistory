@@ -6,11 +6,6 @@
 
 <br/><br/>
 
-#{list items:tailleListes, as:'i'}
-    ${i}
-#{/list}
-
-
 <div class="tableau" id="tabPoolChamp">
     Your champion Pool<br/>
     <div class="col1">
@@ -81,11 +76,9 @@
 </div>
 
 
-#{if poolChampions.size()>200}
 <div class="tableau" id="tabComboChamp">
-    <div align="center">${poolChampions.size()/5} combinaisons possibles</div>
-    <br/>
-    <div align="center">${poolChampions.subList(0,200).size()/5} meilleures combinaisons :</div>
+#{if poolChampions.size()>200}
+    <div align="center">${poolChampions.subList(0,200).size()/5} meilleures combinaisons parmi ${poolChampions.size()/5} possibles:</div>
     <br/>
     <div class="col1">
         <div class="ligne1"><strong>Top</strong></div>
@@ -127,7 +120,6 @@
         #{/if}
         #{/list}
     </div>
-</div>
 #{/if}
 #{else}
 <div align="center">${poolChampions.size()/5} combinaisons possibles :</div>
@@ -173,6 +165,7 @@
         #{/if}
         #{/list}
     </div>
+</div>
 </div>
 #{/else}
 

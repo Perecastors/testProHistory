@@ -66,15 +66,14 @@ div.colCreerIcone{
 }
 
 div.colCreerGauche{
-    width: 39px;
-    height: 20px;
+    width: 59px;
+    height: 40px;
     float:left;
-    padding-top: 11px;
     text-align:center;
 }
 
 div.alignementDroite{
-    width: 250px;
+    width: 270px;
     height: 42px;
     border: 1px solid red;
     margin-bottom: 10px;
@@ -137,7 +136,12 @@ img.modif{
     height: 40px;
 }
 
-div.toggleClassement{
+.toggleClassement{
+    height:20px;
+    padding-top: 11px;
+}
+
+div.nomChampionCreer{
     height:20px;
     padding-top: 11px;
 }

@@ -13,31 +13,27 @@
 #{if champion.ligne.equals(ligne)}
     <div class="alignementDroite">
         <div class="colCreerGauche">
-            # ${champion.preference}
-        </div>
-        <div class="colCreerIcone">
-            <div class="icone">
-                <img class="icone" src="http://publicdomainvectors.org/photos/rodentia-icons_emblem-unreadable.png">
-            </div>
-        </div>
-        <div class="colCreerDroite">
-            <div class="toggleClassement">
-                ${champion.nom}
-            </div>
+            <div class="toggleClassement"># ${champion.preference}</div>
             <form class="toggleClassement" style="display: none" action="@{ChampionsController.changementPreference(champion.id)}" method="post">
                 #
                 <select name="champion.preference">
                     <option value='${champion.preference}'>${champion.preference}</option>
                     #{list items:1..preference, as:'i'}
-                        #{if i!=champion.preference}
-                            <option value='${i}'>${i}</option>
-                        #{/if}
+                    #{if i!=champion.preference}
+                    <option value='${i}'>${i}</option>
+                    #{/if}
                     #{/list}
                 </select>
-                ${champion.nom}
                 <!--<input type="submit" value="Ok">-->
             </form>
-
+        </div>
+        <div class="colCreerIcone">
+            <div class="icone">
+                <a href="@{ChampionsController.delete(champion.id,ligne,preference)}"><img class="icone" src="http://publicdomainvectors.org/photos/rodentia-icons_emblem-unreadable.png" title="Retirer ${champion.nom} de la sélection"></a>
+            </div>
+        </div>
+        <div class="colCreerDroite">
+            <div class="nomChampionCreer">${champion.nom}</div>
         </div>
         <div class="colCreerImage">
             <img class="modif" src=${champion.getUrlImage()} title="${champion.nom}" border="4">
@@ -65,35 +61,12 @@
     <div class="colGrande">Impossible d'ajouter un autre champion (10 max.)</div>
     #{/else}
     <div class="colGrande">
-        <div class="toggleSuppression">Supprimer un champion</div>
-        <div class="toggleSuppression" style="display: none">Annuler Suppression</div>
-        <button class="toggleSuppression">Go</button>
-        <button class="toggleSuppression" style="display: none">Go</button>
-    </div>
-    <div class="colGrande">
         <div class="toggleClassement">Modifier classement</div>
-        <div class="toggleClassement" style="display: none">Annuler modification classement</div>
+        <div class="toggleClassement" style="display: none">Annuler modification classement</div><br/>
         <button class="toggleClassement">Go</button>
         <button class="toggleClassement" style="display: none">Go</button>
     </div>
 </div>
-
-<!--<div class="test">truc</div>-->
-
-<!--<br/><br/><br/><br/><br/>-->
-
-<div style="clear:both">
-    <div style="clear:both" class="toggleSuppression">Classement champions : </div>
-    <div class="toggleSuppression" style="display: none">Sélectionner un champion à supprimer : </div>
-</div>
-
-*{<!--<div class="conteneur">-->
-    <!--<img class="contenu" src="http://ddragon.leagueoflegends.com/cdn/6.20.1/img/champion/Akali.png" title="${champion.nom}" border="4">-->
-    <!--<img class="apercu" src="http://www.icone-png.com/png/19/18859.png" title="Fermer">-->
-<!--</div>-->
-
-<!--<img class="cachee" id="1" src="http://ddragon.leagueoflegends.com/cdn/6.20.1/img/champion/Aatrox.png" title="Aatrox" border="4">-->
-<!--<img class="cachee" id="2" src="http://ddragon.leagueoflegends.com/cdn/6.20.1/img/champion/Ahri.png" title="Ahri" border="4">-->}*
 
 #{set 'moreScripts'}
     #{script 'lol.js'/}

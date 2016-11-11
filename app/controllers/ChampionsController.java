@@ -1,5 +1,6 @@
 package controllers;
 
+import jdk.nashorn.internal.ir.IdentNode;
 import models.Champion;
 import play.mvc.Controller;
 import services.ChampionService;
@@ -24,14 +25,46 @@ public class ChampionsController extends Controller {
         ChampionService.enregistrer(champion);
         List<Champion> listeChampion = ChampionService.getAllChampions();
         List<Integer> nombreChampions=getMaxValueLigne(listeChampion);
-        create(champion.ligne,champion.preference+1,nombreChampions);
+        switch(champion.ligne){
+            case("Top"):
+                create("Top",nombreChampions.get(1)+1,nombreChampions);
+                break;
+            case("Jungle"):
+                create("Jungle",nombreChampions.get(3)+1,nombreChampions);
+                break;
+            case("Mid"):
+                create("Mid",nombreChampions.get(5)+1,nombreChampions);
+                break;
+            case("Adc"):
+                create("Adc",nombreChampions.get(7)+1,nombreChampions);
+                break;
+            case("Support"):
+                create("Support",nombreChampions.get(9)+1,nombreChampions);
+                break;
+        }
     }
 
     public static void delete(Long idChampion,String ligne,int preference) {
         ChampionService.supprimer(idChampion);
         List<Champion> listeChampion = ChampionService.getAllChampions();
         List<Integer> nombreChampions=getMaxValueLigne(listeChampion);
-        create(ligne,preference,nombreChampions);
+        switch(ligne){
+            case("Top"):
+                create("Top",nombreChampions.get(1)+1,nombreChampions);
+                break;
+            case("Jungle"):
+                create("Jungle",nombreChampions.get(3)+1,nombreChampions);
+                break;
+            case("Mid"):
+                create("Mid",nombreChampions.get(5)+1,nombreChampions);
+                break;
+            case("Adc"):
+                create("Adc",nombreChampions.get(7)+1,nombreChampions);
+                break;
+            case("Support"):
+                create("Support",nombreChampions.get(9)+1,nombreChampions);
+                break;
+        }
     }
 
     public static void changementPreference(Long idChampion, Champion champion) {
@@ -41,8 +74,7 @@ public class ChampionsController extends Controller {
 
     public static List<Champion> trier(List<Champion> listeChampion){
         List<Champion> listeChampionTriee = new ArrayList();
-        Integer preferenceMax = getMaxValuePreference(listeChampion);
-        for(int i=1; i<=preferenceMax; i++){
+        for(int i=1; i<=10; i++){
             for(int j=0; j<listeChampion.size(); j++){
                 if(listeChampion.get(j).preference==i){
                     listeChampionTriee.add(listeChampion.get(j));
@@ -89,14 +121,24 @@ public class ChampionsController extends Controller {
 
     public static int getMaxValuePreference(List<Champion> listeChampion) {
         List<Integer> preferences = new ArrayList();
+        Integer max =0;
         for (int i = 0; i < listeChampion.size(); ++i) {
             preferences.add(listeChampion.get(i).preference);
         }
         if(preferences.size()!=0){
-            return Collections.max(preferences);
+            max = Collections.max(preferences);
+        }
+        List<Integer> nonContenus = new ArrayList();
+        for (int i = 1; i <=max; ++i) {
+            if(!preferences.contains(i)){
+               nonContenus.add(i);
+            }
+        }
+        if(nonContenus.size()>0){
+            return nonContenus.get(0)-1;
         }
         else{
-            return 0;
+            return max;
         }
     }
 
