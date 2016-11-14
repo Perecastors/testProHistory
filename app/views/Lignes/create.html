@@ -45,7 +45,12 @@
 </div>
 
 <div class="tableauGrand">
-    #{if nombreChampions.get(0)<10}
+    #{if ((nombreChampions.get(0)>9) && (ligne=="Top"))||((nombreChampions.get(2)>9) && (ligne=="Jungle"))||
+    ((nombreChampions.get(4)>9) && (ligne=="Mid"))||((nombreChampions.get(6)>9) && (ligne=="Adc"))||
+    ((nombreChampions.get(8)>9) && (ligne=="Support"))}
+    <div class="colGrande">Impossible d'ajouter un autre champion (10 max.)</div>
+    #{/if}
+    #{else}
     <div class="colGrande">Ajouter un Champion
         <form action="@{ChampionsController.create(nombreChampions)}" method="post">
             <select name="champion.nom">
@@ -56,9 +61,6 @@
             <input type="submit" value="Ok">
         </form>
     </div>
-    #{/if}
-    #{else}
-    <div class="colGrande">Impossible d'ajouter un autre champion (10 max.)</div>
     #{/else}
     <div class="colGrande">
         <div class="toggleClassement">Modifier classement</div>
