@@ -16,7 +16,6 @@ server.pid
 /dist/
 .cache
 
-.gitignore
 PH.iws
 lib/
 modules/
