@@ -17,6 +17,7 @@ POST   /ajouterChampion                         ChampionsController.save
 GET    /liste                                   ChampionsController.afficher
 GET    /deleteChampion                          ChampionsController.delete(id)
 POST   /changementPref                          ChampionsController.changementPreference
+POST   /test                                    ChampionsController.test2
 
 
 # Ignore favicon requests

@@ -16,6 +16,10 @@ import static java.lang.Integer.parseInt;
 
 public class ChampionsController extends Controller {
 
+    public static void test2(String ligne, List<Champion> listeChampion){
+        renderTemplate("Lignes/test.html",ligne,listeChampion);
+    }
+
     public static void create(String ligne, int preference,List<Integer> nombreChampions) {
         List<Champion> listeChampion = trier(ChampionService.getAllChampions());
         renderTemplate("/Lignes/create.html",ligne,preference,listeChampion,nombreChampions);

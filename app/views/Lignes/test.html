@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+</head>
+<body>
+
+${ligne}
+#{list items:listeChampion, as:'champion'}
+    #{if champion.ligne=="Top"}
+        ${champion.preference}
+    #{/if}
+#{/list}
+
+</body>
+</html>

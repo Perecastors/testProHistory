@@ -25,7 +25,7 @@ public class ChampionService {
     }
 
     public static void changerPreference(Long idChampion,int pref) {
-        //importer champion dont campion.id = idChampion
+        //importer champion dont champion.id = idChampion
         Champion champion = Champion.findById(idChampion);
         // remplacer champion.preference par pref
         champion.preference=pref;
