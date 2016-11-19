@@ -20,21 +20,26 @@ a.accueil{
     box-sizing:border-box;
 }
 
-div.tableau{
-    margin-left: auto;
-    margin-right: auto;
-    width: 301px;
-}
-
 #tabPoolChamp{
-float:left;
-margin-left: 15px;
+    float:left;
+    margin-left: 15px;
+    text-align:center;
 }
-
 
 #tabComboChamp{
-float:right;
-margin-right: 15px;
+    float:right;
+    width:316px;
+}
+
+#nbreComboChamp{
+    width:301px;
+    float:left;
+}
+
+#imageComboChamp{
+    width:318px;
+    height:500px;
+    overflow: auto;
 }
 
 div.col{
@@ -90,9 +95,9 @@ div.tableauGrand{
 }
 
 div.colGrande{
-
-    width: 200px;
+    width: 250px;
     float:left;
+    text-align:center;
 }
 
 div.col1{
@@ -136,9 +141,19 @@ img.modif{
     height: 40px;
 }
 
-.toggleClassement{
+button.toggleClassement{
+    height:39px;
+    width:200px;
+}
+
+input.toggleClassement{
+    height:39px;
+    width:200px;
+}
+
+div.toggleClassement{
     height:20px;
-    padding-top: 11px;
+    padding-top:11px;
 }
 
 div.nomChampionCreer{

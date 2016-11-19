@@ -24,12 +24,12 @@ public class ChampionService {
         Champion.delete("id=?",idChampion);
     }
 
-    public static void changerPreference(Long idChampion,int pref) {
-        //importer champion dont champion.id = idChampion
-        Champion champion = Champion.findById(idChampion);
-        // remplacer champion.preference par pref
-        champion.preference=pref;
-        champion.save();
+    public static void changerPreference(List<Long> idChampion,List<Integer> championPreference) {
+        for (int i=0;i<idChampion.size();i++){
+            Champion champion = Champion.findById(idChampion.get(i));
+            champion.preference=championPreference.get(i);
+            champion.save();
+        }
     }
 
     public static List<Champion> getAllChampions(){

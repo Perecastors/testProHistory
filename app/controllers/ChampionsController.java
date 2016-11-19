@@ -16,8 +16,25 @@ import static java.lang.Integer.parseInt;
 
 public class ChampionsController extends Controller {
 
-    public static void test2(String ligne, List<Champion> listeChampion){
-        renderTemplate("Lignes/test.html",ligne,listeChampion);
+    public static void changementPreference(String ligne,List<Integer> nombreChampions,List<Integer> championPreference,List<Long> idChampion){
+        ChampionService.changerPreference(idChampion,championPreference);
+        switch(ligne){
+            case("Top"):
+                create("Top",nombreChampions.get(1)+1,nombreChampions);
+                break;
+            case("Jungle"):
+                create("Jungle",nombreChampions.get(3)+1,nombreChampions);
+                break;
+            case("Mid"):
+                create("Mid",nombreChampions.get(5)+1,nombreChampions);
+                break;
+            case("Adc"):
+                create("Adc",nombreChampions.get(7)+1,nombreChampions);
+                break;
+            case("Support"):
+                create("Support",nombreChampions.get(9)+1,nombreChampions);
+                break;
+        }
     }
 
     public static void create(String ligne, int preference,List<Integer> nombreChampions) {
@@ -69,11 +86,6 @@ public class ChampionsController extends Controller {
                 create("Support",nombreChampions.get(9)+1,nombreChampions);
                 break;
         }
-    }
-
-    public static void changementPreference(Long idChampion, Champion champion) {
-        ChampionService.changerPreference(idChampion,champion.preference);
-        afficher();
     }
 
     public static List<Champion> trier(List<Champion> listeChampion){
