@@ -317,6 +317,11 @@ public class ChampionsController extends Controller {
     }
 
     public static boolean test(LinkedList<Champion> listeChampion){
+        if(listeChampion.size()==5){
+            if(listeChampion.get(4).nom.equals("Anivia")){
+                return false;
+            }
+        }
         return true;
     }
 }
