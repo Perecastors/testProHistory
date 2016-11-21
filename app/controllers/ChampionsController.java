@@ -2,6 +2,7 @@ package controllers;
 
 import jdk.nashorn.internal.ir.IdentNode;
 import models.Champion;
+import models.Pool;
 import play.mvc.Controller;
 import services.ChampionService;
 
@@ -104,8 +105,19 @@ public class ChampionsController extends Controller {
         List<Integer> tailleListes = getMaxValueLigne(ChampionService.getAllChampions());
         List<Champion> listeChampion = trier(ChampionService.getAllChampions());
         int ordre = 1;
-        List<Champion> poolChampions = combinaisons(listeChampion,ordre);
+        List<Pool> poolChampions = trierParNote(combinaisons(listeChampion,ordre));
         renderTemplate("/Lignes/afficher.html",listeChampion,tailleListes,poolChampions);
+    }
+
+    public static Pool creerPool(List<Champion> combinaison){
+        Pool pool = new Pool();
+        pool.championTop=combinaison.get(0);
+        pool.championJungle=combinaison.get(1);
+        pool.championMid=combinaison.get(2);
+        pool.championAdc=combinaison.get(3);
+        pool.championSupport=combinaison.get(4);
+        pool.note=0;
+        return pool;
     }
 
     public static List<Integer> getMaxValueLigne(List<Champion> listeChampion){
@@ -158,7 +170,8 @@ public class ChampionsController extends Controller {
         }
     }
 
-    public static List<Champion> combinaisons(List<Champion> listeChampion, int ordre){
+    public static List<Pool> combinaisons(List<Champion> listeChampion, int ordre){
+        int note=1;
         final int TOP=0;
         final int JUNGLE=4;
         final int MID=1;
@@ -227,6 +240,7 @@ public class ChampionsController extends Controller {
         LinkedList<Champion> listeChampions = new LinkedList<>();
         LinkedList<Champion> listeTemp = new LinkedList<>();
         List<Champion> listeCombosPossibles = new ArrayList<>();
+        List<Pool> listePoolPossibles = new ArrayList();
         int j =1;
         int res =1;
         listeTemp.addAll(liste1);
@@ -235,7 +249,7 @@ public class ChampionsController extends Controller {
             if (listeTemp.size() > 0) {
                 Champion champManipule = listeTemp.pollFirst();
                 listeChampions.add(champManipule);
-                if (test(listeChampions)) {
+                if (test(listeChampions,note)) {
                     switch (j) {
                         case 5:
 //                            System.out.print("Resultat " + res + " : ");
@@ -245,9 +259,12 @@ public class ChampionsController extends Controller {
 //                            System.out.print(listeChampions.get(ADC).name + "(adc), ");
 //                            System.out.print(listeChampions.get(SUPPORT).name + "(support)");
 //                            System.out.println("");
+                            Pool pool=creerPool(listeChampions);
+                            pool.note=notation(pool);
                             for(int i=0;i<5;i++){
                                 listeCombosPossibles.add(listeChampions.get(i));
                             }
+                            listePoolPossibles.add(pool);
                             listeChampions.removeLast();
                             res = res + 1;
                             break;
@@ -313,16 +330,30 @@ public class ChampionsController extends Controller {
                 }
             }
         }
-        return listeCombosPossibles;
+        return listePoolPossibles;
     }
 
-    public static boolean test(LinkedList<Champion> listeChampion){
-        if(listeChampion.size()==5){
-            if(listeChampion.get(4).nom.equals("Anivia")){
-                return false;
+    public static boolean test(LinkedList<Champion> listeChampion, Integer note){
+        return true;
+    }
+
+    public static Integer notation(Pool pool){
+        if (pool.championSupport.nom.equals("Anivia") && pool.championAdc.nom.equals("Blitzcrank")) {
+            pool.note = pool.note + 1;
+        }
+        return pool.note;
+    }
+
+    public static List<Pool> trierParNote(List<Pool> listePool){
+        List<Pool> listePoolTriee = new ArrayList();
+        for(int i=100;i>-1;i--){
+            for(int j=0;j<listePool.size();j++){
+                if(listePool.get(j).note==i){
+                    listePoolTriee.add(listePool.get(j));
+                }
             }
         }
-        return true;
+        return listePoolTriee;
     }
 }
 

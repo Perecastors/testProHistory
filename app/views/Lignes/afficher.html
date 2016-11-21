@@ -1,6 +1,6 @@
 #{extends 'mainRor.html'/}
 
-#{set title:'Pool champions' /}
+#{set title:'Pool champions 2' /}
 
 <a href="/">Retourner à l'accueil</a><br/><br/>
 
@@ -16,9 +16,9 @@
         #{/if}
         #{/list}
         #{if tailleListes.get(0)<tailleListes.get(10)}
-            #{list items:1..tailleListes.get(10)-tailleListes.get(0), as:'i'}
-            <div class="ligne"></div>
-            #{/list}
+        #{list items:1..tailleListes.get(10)-tailleListes.get(0), as:'i'}
+        <div class="ligne"></div>
+        #{/list}
         #{/if}
     </div>
     <div class="col">
@@ -77,12 +77,12 @@
 
 <div id="tabComboChamp">
     <div id="nbreComboChamp" align="center">
-    #{if poolChampions.size()>200}
-    ${poolChampions.subList(0,200).size()/5} meilleures combinaisons parmi ${poolChampions.size()/5} :
-    #{/if}
-    #{else}
-    ${poolChampions.size()/5} combinaisons possibles
-    #{/else}
+        #{if poolChampions.size()>40}
+        40 meilleures combinaisons parmi ${poolChampions.size()} :
+        #{/if}
+        #{else}
+        ${poolChampions.size()} combinaisons possibles
+        #{/else}
     </div>
 
     <br/><br/>
@@ -106,80 +106,59 @@
     </div>
 
     <div id="imageComboChamp">
-    #{if poolChampions.size()>200}
+        #{if poolChampions.size()>40}
         <div class="col1">
-            #{list items:poolChampions.subList(0,200), as:'champion'}
-                #{if champion.ligne.equals("Top")}
-                    <div class="ligne"><img class="ligne" src=${champion.getUrlImage()} title="${champion.nom}" border="4"></div>
-                #{/if}
+            #{list items:poolChampions.subList(0,40), as:'pool'}
+            <div class="ligne"><img class="ligne" src=${pool.championTop.getUrlImage()} title="${pool.championTop.nom}" border="4"></div>
             #{/list}
         </div>
         <div class="col">
-            #{list items:poolChampions.subList(0,200), as:'champion'}
-            #{if champion.ligne.equals("Jungle")}
-            <div class="ligne"><img class="ligne" src=${champion.getUrlImage()} title="${champion.nom}" border="4"></div>
-            #{/if}
+            #{list items:poolChampions.subList(0,40), as:'pool'}
+            <div class="ligne"><img class="ligne" src=${pool.championJungle.getUrlImage()} title="${pool.championJungle.nom}" border="4"></div>
             #{/list}
         </div>
         <div class="col">
-            #{list items:poolChampions.subList(0,200), as:'champion'}
-            #{if champion.ligne.equals("Mid")}
-            <div class="ligne"><img class="ligne" src=${champion.getUrlImage()} title="${champion.nom}" border="4"></div>
-            #{/if}
+            #{list items:poolChampions.subList(0,40), as:'pool'}
+            <div class="ligne"><img class="ligne" src=${pool.championMid.getUrlImage()} title="${pool.championMid.nom}" border="4"></div>
             #{/list}
         </div>
         <div class="col">
-            #{list items:poolChampions.subList(0,200), as:'champion'}
-            #{if champion.ligne.equals("Adc")}
-            <div class="ligne"><img class="ligne" src=${champion.getUrlImage()} title="${champion.nom}" border="4"></div>
-            #{/if}
+            #{list items:poolChampions.subList(0,40), as:'pool'}
+            <div class="ligne"><img class="ligne" src=${pool.championAdc.getUrlImage()} title="${pool.championAdc.nom}" border="4"></div>
             #{/list}
         </div>
         <div class="col">
-            #{list items:poolChampions.subList(0,200), as:'champion'}
-            #{if champion.ligne.equals("Support")}
-            <div class="ligne"><img class="ligne" src=${champion.getUrlImage()} title="${champion.nom}" border="4"></div>
-            #{/if}
+            #{list items:poolChampions.subList(0,40), as:'pool'}
+            <div class="ligne"><img class="ligne" src=${pool.championSupport.getUrlImage()} title="${pool.championSupport.nom}" border="4"></div>
             #{/list}
         </div>
-    #{/if}
-    #{else}
+        #{/if}
+        #{else}
         <div class="col1">
-            #{list items:poolChampions, as:'champion'}
-            #{if champion.ligne.equals("Top")}
-            <div class="ligne"><img class="ligne" src=${champion.getUrlImage()} title="${champion.nom}" border="4"></div>
-            #{/if}
+            #{list items:poolChampions, as:'pool'}
+            <div class="ligne"><img class="ligne" src=${pool.championTop.getUrlImage()} title="${pool.championTop.nom}" border="4"></div>
             #{/list}
         </div>
         <div class="col">
-            #{list items:poolChampions, as:'champion'}
-            #{if champion.ligne.equals("Jungle")}
-            <div class="ligne"><img class="ligne" src=${champion.getUrlImage()} title="${champion.nom}" border="4"></div>
-            #{/if}
+            #{list items:poolChampions, as:'pool'}
+            <div class="ligne"><img class="ligne" src=${pool.championJungle.getUrlImage()} title="${pool.championJungle.nom}" border="4"></div>
             #{/list}
         </div>
         <div class="col">
-            #{list items:poolChampions, as:'champion'}
-            #{if champion.ligne.equals("Mid")}
-            <div class="ligne"><img class="ligne" src=${champion.getUrlImage()} title="${champion.nom}" border="4"></div>
-            #{/if}
+            #{list items:poolChampions, as:'pool'}
+            <div class="ligne"><img class="ligne" src=${pool.championMid.getUrlImage()} title="${pool.championMid.nom}" border="4"></div>
             #{/list}
         </div>
         <div class="col">
-            #{list items:poolChampions, as:'champion'}
-            #{if champion.ligne.equals("Adc")}
-            <div class="ligne"><img class="ligne" src=${champion.getUrlImage()} title="${champion.nom}" border="4"></div>
-            #{/if}
+            #{list items:poolChampions, as:'pool'}
+            <div class="ligne"><img class="ligne" src=${pool.championAdc.getUrlImage()} title="${pool.championAdc.nom}" border="4"></div>
             #{/list}
         </div>
         <div class="col">
-            #{list items:poolChampions, as:'champion'}
-            #{if champion.ligne.equals("Support")}
-            <div class="ligne"><img class="ligne" src=${champion.getUrlImage()} title="${champion.nom}" border="4"></div>
-            #{/if}
+            #{list items:poolChampions, as:'pool'}
+            <div class="ligne"><img class="ligne" src=${pool.championSupport.getUrlImage()} title="${pool.championSupport.nom}" border="4"></div>
             #{/list}
         </div>
     </div>
 </div>
 #{/else}
-
