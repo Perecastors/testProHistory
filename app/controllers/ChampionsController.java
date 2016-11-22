@@ -39,13 +39,18 @@ public class ChampionsController extends Controller {
     }
 
     public static void create(String ligne, int preference,List<Integer> nombreChampions) {
-        List<Champion> listeChampion = trier(ChampionService.getAllChampions());
+        List<Champion> listeChampion = trier(ChampionService.getAllMyChampions());
         renderTemplate("/Lignes/create.html",ligne,preference,listeChampion,nombreChampions);
+    }
+
+    public static void createAdverse(String ligne, int preference,List<Integer> nombreChampions) {
+        List<Champion> listeChampion = trier(ChampionService.getAllAdverseChampions());
+        renderTemplate("/Lignes/create adverse.html",ligne,preference,listeChampion,nombreChampions);
     }
 
     public static void save(Champion champion) {
         ChampionService.enregistrer(champion);
-        List<Champion> listeChampion = ChampionService.getAllChampions();
+        List<Champion> listeChampion = ChampionService.getAllMyChampions();
         List<Integer> nombreChampions=getMaxValueLigne(listeChampion);
         switch(champion.ligne){
             case("Top"):
@@ -66,9 +71,32 @@ public class ChampionsController extends Controller {
         }
     }
 
-    public static void delete(Long idChampion,String ligne,int preference) {
+    public static void saveAdverse(Champion champion) {
+        ChampionService.enregistrer(champion);
+        List<Champion> listeAdverseChampion = ChampionService.getAllAdverseChampions();
+        List<Integer> nombreAdverseChampions=getMaxValueLigne(listeAdverseChampion);
+        switch(champion.ligne){
+            case("Top"):
+                createAdverse("Top",nombreAdverseChampions.get(1)+1,nombreAdverseChampions);
+                break;
+            case("Jungle"):
+                createAdverse("Jungle",nombreAdverseChampions.get(3)+1,nombreAdverseChampions);
+                break;
+            case("Mid"):
+                createAdverse("Mid",nombreAdverseChampions.get(5)+1,nombreAdverseChampions);
+                break;
+            case("Adc"):
+                createAdverse("Adc",nombreAdverseChampions.get(7)+1,nombreAdverseChampions);
+                break;
+            case("Support"):
+                createAdverse("Support",nombreAdverseChampions.get(9)+1,nombreAdverseChampions);
+                break;
+        }
+    }
+
+    public static void delete(Long idChampion,String ligne) {
         ChampionService.supprimer(idChampion);
-        List<Champion> listeChampion = ChampionService.getAllChampions();
+        List<Champion> listeChampion = ChampionService.getAllMyChampions();
         List<Integer> nombreChampions=getMaxValueLigne(listeChampion);
         switch(ligne){
             case("Top"):
@@ -89,6 +117,29 @@ public class ChampionsController extends Controller {
         }
     }
 
+    public static void deleteAdverse(Long idChampion,String ligne) {
+        ChampionService.supprimer(idChampion);
+        List<Champion> listeChampion = ChampionService.getAllAdverseChampions();
+        List<Integer> nombreChampions=getMaxValueLigne(listeChampion);
+        switch(ligne){
+            case("Top"):
+                createAdverse("Top",nombreChampions.get(1)+1,nombreChampions);
+                break;
+            case("Jungle"):
+                createAdverse("Jungle",nombreChampions.get(3)+1,nombreChampions);
+                break;
+            case("Mid"):
+                createAdverse("Mid",nombreChampions.get(5)+1,nombreChampions);
+                break;
+            case("Adc"):
+                createAdverse("Adc",nombreChampions.get(7)+1,nombreChampions);
+                break;
+            case("Support"):
+                createAdverse("Support",nombreChampions.get(9)+1,nombreChampions);
+                break;
+        }
+    }
+
     public static List<Champion> trier(List<Champion> listeChampion){
         List<Champion> listeChampionTriee = new ArrayList();
         for(int i=1; i<=10; i++){
@@ -102,11 +153,13 @@ public class ChampionsController extends Controller {
     }
 
     public static void afficher() {
-        List<Integer> tailleListes = getMaxValueLigne(ChampionService.getAllChampions());
-        List<Champion> listeChampion = trier(ChampionService.getAllChampions());
+        List<Integer> tailleListes = getMaxValueLigne(ChampionService.getAllMyChampions());
+        List<Integer> tailleAdverseListes = getMaxValueLigne(ChampionService.getAllAdverseChampions());
+        List<Champion> listeChampion = trier(ChampionService.getAllMyChampions());
+        List<Champion> listeAdverseChampion = trier(ChampionService.getAllAdverseChampions());
         int ordre = 1;
-        List<Pool> poolChampions = trierParNote(combinaisons(listeChampion,ordre));
-        renderTemplate("/Lignes/afficher.html",listeChampion,tailleListes,poolChampions);
+        List<Pool> poolChampions = trierParNote(combinaisons(listeChampion,listeAdverseChampion,ordre));
+        renderTemplate("/Lignes/afficher.html",listeChampion,listeAdverseChampion,tailleListes,tailleAdverseListes,poolChampions);
     }
 
     public static Pool creerPool(List<Champion> combinaison){
@@ -170,7 +223,7 @@ public class ChampionsController extends Controller {
         }
     }
 
-    public static List<Pool> combinaisons(List<Champion> listeChampion, int ordre){
+    public static List<Pool> combinaisons(List<Champion> listeChampion, List<Champion> listeAdverseChampion, int ordre){
         int note=1;
         final int TOP=0;
         final int JUNGLE=4;
@@ -239,7 +292,6 @@ public class ChampionsController extends Controller {
         }
         LinkedList<Champion> listeChampions = new LinkedList<>();
         LinkedList<Champion> listeTemp = new LinkedList<>();
-        List<Champion> listeCombosPossibles = new ArrayList<>();
         List<Pool> listePoolPossibles = new ArrayList();
         int j =1;
         int res =1;
@@ -249,7 +301,7 @@ public class ChampionsController extends Controller {
             if (listeTemp.size() > 0) {
                 Champion champManipule = listeTemp.pollFirst();
                 listeChampions.add(champManipule);
-                if (test(listeChampions,note)) {
+                if (test(listeChampions,listeAdverseChampion,note)) {
                     switch (j) {
                         case 5:
 //                            System.out.print("Resultat " + res + " : ");
@@ -261,9 +313,6 @@ public class ChampionsController extends Controller {
 //                            System.out.println("");
                             Pool pool=creerPool(listeChampions);
                             pool.note=notation(pool);
-                            for(int i=0;i<5;i++){
-                                listeCombosPossibles.add(listeChampions.get(i));
-                            }
                             listePoolPossibles.add(pool);
                             listeChampions.removeLast();
                             res = res + 1;
@@ -333,14 +382,21 @@ public class ChampionsController extends Controller {
         return listePoolPossibles;
     }
 
-    public static boolean test(LinkedList<Champion> listeChampion, Integer note){
+    public static boolean test(LinkedList<Champion> listeChampion, List<Champion> listeAdverseChampion, Integer note){
+//        if(listeAdverseChampion.size()>0){
+//            if (listeAdverseChampion.get(0).nom.equals("Alistar")){
+//                if(listeChampion.get(0).nom.equals("Blitzcrank")){
+//                    return false;
+//                }
+//            }
+//        }
         return true;
     }
 
     public static Integer notation(Pool pool){
-        if (pool.championSupport.nom.equals("Anivia") && pool.championAdc.nom.equals("Blitzcrank")) {
-            pool.note = pool.note + 1;
-        }
+//        if (pool.championSupport.nom.equals("Anivia") && pool.championAdc.nom.equals("Blitzcrank")) {
+//            pool.note = pool.note + 1;
+//        }
         return pool.note;
     }
 
@@ -354,6 +410,10 @@ public class ChampionsController extends Controller {
             }
         }
         return listePoolTriee;
+    }
+
+    public static void gestionPrefCont(){
+        renderTemplate("/Lignes/pref-cont.html");
     }
 }
 

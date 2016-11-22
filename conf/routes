@@ -13,11 +13,15 @@ POST    /confirmProGame                         FormController.confirmProGame
 
 #Route Aurelien
 GET    /ajouterChampion                         ChampionsController.create(ligne,preference,nombreChampions)
+GET    /ajouterChampionAdverse                  ChampionsController.createAdverse(ligne,preference,nombreChampions)
 POST   /ajouterChampion                         ChampionsController.save
+POST   /ajouterChampionAdverse                  ChampionsController.saveAdverse
 GET    /liste                                   ChampionsController.afficher
 GET    /deleteChampion                          ChampionsController.delete(id)
+GET    /deleteChampionAdverse                   ChampionsController.deleteAdverse(id)
 POST   /changementPref                          ChampionsController.changementPreference
 POST   /test                                    ChampionsController.test2
+GET    /pref-cont                               ChampionsController.gestionPrefCont
 
 
 # Ignore favicon requests

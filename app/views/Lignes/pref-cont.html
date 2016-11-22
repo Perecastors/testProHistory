@@ -1,0 +1,12 @@
+#{extends 'mainRor.html'/}
+
+#{set title:'Gestion préférences et contraintes' /}
+
+<div class="colGrande">Ajouter un Champion
+    <form action="@{ChampionsController.gestionPrefCont()}" method="post">
+        <select name="champion.nom">
+            #{render 'tags/dropDownAllChamp.html'/}
+        </select>
+        <input type="submit" value="Ok">
+    </form>
+</div>

@@ -12,6 +12,7 @@ public class Champion extends Model {
     public String nom;
     public String ligne;
     public int preference;
+    public String camp;
 
     public String getUrlImage(){
         String baseUrl = "http://ddragon.leagueoflegends.com/cdn/6.20.1/img/champion/";

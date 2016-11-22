@@ -12,6 +12,16 @@ $( "button.toggleClassement" ).click(function() {
     $( ".toggleClassement" ).toggle();
 });
 
+$( "button.toggleYourChampionPool" ).click(function() {
+    $( "div.toggleYourChampionPool" ).show();
+    $( "div.toggleAdverseChampionPool" ).hide();
+});
+
+$( "button.toggleAdverseChampionPool" ).click(function() {
+    $( "div.toggleAdverseChampionPool" ).show();
+    $( "div.toggleYourChampionPool" ).hide();
+});
+
 });
 
 

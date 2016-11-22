@@ -13,7 +13,7 @@ public class ChampionService {
         //quelles sont mes criteres pour ajouter une ligne ??
         if(!champion.nom.isEmpty()) {// le champ nom pas vide
             // et il faut que le couple (nom,ligne) n'existe pas
-            List<Champion> liste = Champion.find("nom = ? AND ligne=?",champion.nom,champion.ligne).fetch();
+            List<Champion> liste = Champion.find("nom = ? AND ligne=? AND camp=?",champion.nom,champion.ligne,champion.camp).fetch();
             if(liste.size() ==0){
                 champion.save();
             }
@@ -32,8 +32,14 @@ public class ChampionService {
         }
     }
 
-    public static List<Champion> getAllChampions(){
-        return Champion.findAll();
+    public static List<Champion> getAllMyChampions(){
+        List<Champion> listeChampions =Champion.find("camp=?","monCamp").fetch();
+        return listeChampions;
+    }
+
+    public static List<Champion> getAllAdverseChampions(){
+        List<Champion> listeChampions =Champion.find("camp=?","autreCamp").fetch();
+        return listeChampions;
     }
 
 
