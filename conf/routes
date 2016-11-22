@@ -22,6 +22,7 @@ GET    /deleteChampionAdverse                   ChampionsController.deleteAdvers
 POST   /changementPref                          ChampionsController.changementPreference
 POST   /test                                    ChampionsController.test2
 GET    /pref-cont                               ChampionsController.gestionPrefCont
+POST   /pref-cont                               ChampionsController.ajouterPref
 
 
 # Ignore favicon requests

@@ -1,6 +1,7 @@
 package services;
 
 import models.Champion;
+import models.Pref;
 
 import java.util.List;
 
@@ -40,6 +41,11 @@ public class ChampionService {
     public static List<Champion> getAllAdverseChampions(){
         List<Champion> listeChampions =Champion.find("camp=?","autreCamp").fetch();
         return listeChampions;
+    }
+
+    public static List<Pref> getAllPref(){
+        List<Pref> listePref = Pref.findAll();
+        return listePref;
     }
 
 

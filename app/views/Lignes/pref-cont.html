@@ -1,12 +1,104 @@
 #{extends 'mainRor.html'/}
 
-#{set title:'Gestion préférences et contraintes' /}
+#{set title:'gestion préférences et contraintes' /}
 
-<div class="colGrande">Ajouter un Champion
-    <form action="@{ChampionsController.gestionPrefCont()}" method="post">
-        <select name="champion.nom">
-            #{render 'tags/dropDownAllChamp.html'/}
-        </select>
-        <input type="submit" value="Ok">
-    </form>
+<a href="/liste">Retourner à la sélection</a><br/><br/>
+
+<form class="formPref" action="@{ChampionsController.gestionPrefCont()}" method="post">
+    <div id="tabPref">
+        Associations souhaitables<br/><br/>
+        <div class="colPref1">
+            <div class="ligne1"><strong>Top</strong><br/></div>
+            <div class="lignePref">
+                <div class="colPrefsansbordure">Ajouter Champion
+                    <select name="nomChampionTop">
+                        #{render 'tags/dropDownAllChamp.html'/}
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="colPref">
+            <div class="ligne1"><strong>Jungle</strong><br/></div>
+            <div class="lignePref">
+                <div class="colPrefsansbordure">Ajouter Champion
+                    <select name="nomChampionJungle">
+                        #{render 'tags/dropDownAllChamp.html'/}
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="colPref">
+            <div class="ligne1"><strong>Mid</strong><br/></div>
+            <div class="lignePref">
+                <div class="colPrefsansbordure">Ajouter Champion
+                    <select name="nomChampionMid">
+                        #{render 'tags/dropDownAllChamp.html'/}
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="colPref">
+            <div class="ligne1"><strong>Adc</strong><br/></div>
+            <div class="lignePref">
+                <div class="colPrefsansbordure">Ajouter Champion
+                    <select name="nomChampionAdc">
+                        #{render 'tags/dropDownAllChamp.html'/}
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="colPref">
+            <div class="ligne1"><strong>Support</strong><br/></div>
+            <div class="lignePref">
+                <div class="colPrefsansbordure">Ajouter Champion
+                    <select name="nomChampionSupport">
+                        #{render 'tags/dropDownAllChamp.html'/}
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="boutonColPrefsansbordure">
+        <input class="boutonPref" type="submit" value="Ok">
+    </div>
+</form>
+
+
+
+<div id="tabComboChamp">
+    <div>
+        <div class="col1">
+            <div class="ligne1"><strong>Top</strong></div>
+        </div>
+        <div class="col">
+            <div class="ligne1"><strong>Jungle</strong></div>
+        </div>
+        <div class="col">
+            <div class="ligne1"><strong>Mid</strong></div>
+        </div>
+        <div class="col">
+            <div class="ligne1"><strong>Adc</strong></div>
+        </div>
+        <div class="col">
+            <div class="ligne1"><strong>Support</strong></div>
+        </div>
+    </div>
+
+    <div id="imageComboChamp">
+        <div class="col1">
+            #{list items:listePref, as:'pref'}
+            <div class="ligne">${pref.nomChampionTop}</div>
+            #{/list}
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+    </div>
 </div>

@@ -3,6 +3,7 @@ package controllers;
 import jdk.nashorn.internal.ir.IdentNode;
 import models.Champion;
 import models.Pool;
+import models.Pref;
 import play.mvc.Controller;
 import services.ChampionService;
 
@@ -413,7 +414,38 @@ public class ChampionsController extends Controller {
     }
 
     public static void gestionPrefCont(){
-        renderTemplate("/Lignes/pref-cont.html");
+        List<Pref> listePref=ChampionService.getAllPref();
+        renderTemplate("/Lignes/pref-cont.html",listePref);
+    }
+
+    public static void ajouterPref(String nomChampionTop,String nomChampionJungle,String nomChampionMid,
+                                    String nomChampionAdc,String nomChampionSupport){
+        Pref pref = new Pref();
+        pref.nomChampionTop=nomChampionTop;
+        pref.nomChampionJungle=nomChampionJungle;
+        pref.nomChampionMid=nomChampionMid;
+        pref.nomChampionAdc=nomChampionAdc;
+        pref.nomChampionSupport=nomChampionSupport;
+        int compteur=0;
+        if(pref.nomChampionTop.length()>0){
+            compteur=compteur+1;
+        }
+        if(pref.nomChampionJungle.length()>0){
+            compteur=compteur+1;
+        }
+        if(pref.nomChampionMid.length()>0){
+            compteur=compteur+1;
+        }
+        if(pref.nomChampionAdc.length()>0){
+            compteur=compteur+1;
+        }
+        if(pref.nomChampionSupport.length()>0){
+            compteur=compteur+1;
+        }
+        if(compteur>1){
+            pref.save();
+        }
+        gestionPrefCont();
     }
 }
 
