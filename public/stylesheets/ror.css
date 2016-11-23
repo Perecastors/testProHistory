@@ -2,6 +2,10 @@
     box-sizing:border-box;
 }
 
+.titreCreate{
+    text-align:center;
+}
+
 #tabPoolChamp{
     float:left;
     margin-left: 15px;
