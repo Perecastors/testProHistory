@@ -385,13 +385,6 @@ public class ChampionsController extends Controller {
     }
 
     public static boolean test(LinkedList<Champion> listeChampion, List<Champion> listeAdverseChampion, Integer note){
-//        if(listeAdverseChampion.size()>0){
-//            if (listeAdverseChampion.get(0).nom.equals("Alistar")){
-//                if(listeChampion.get(0).nom.equals("Blitzcrank")){
-//                    return false;
-//                }
-//            }
-//        }
         return true;
     }
 
@@ -441,15 +434,20 @@ public class ChampionsController extends Controller {
             }
             note=0;
         }
-        return noteMax-1;
+        if(note<1){
+            return 0;
+        }
+        else{
+            return noteMax-1;
+        }
     }
 
     public static List<Pool> trierParNote(List<Pool> listePool){
         List<Pool> listePoolTriee = new ArrayList();
         for(int i=100;i>-1;i--){
-            for(int j=0;j<listePool.size();j++){
-                if(listePool.get(j).note==i){
-                    listePoolTriee.add(listePool.get(j));
+            for (Pool pool:listePool) {
+                if(pool.note==i){
+                    listePoolTriee.add(pool);
                 }
             }
         }
