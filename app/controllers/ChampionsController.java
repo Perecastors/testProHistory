@@ -434,7 +434,7 @@ public class ChampionsController extends Controller {
             }
             note=0;
         }
-        if(note<1){
+        if(noteMax<1){
             return 0;
         }
         else{
