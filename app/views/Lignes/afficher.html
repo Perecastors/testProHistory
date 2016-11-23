@@ -8,12 +8,13 @@
 <div id="tabPoolChamp" class="toggleYourChampionPool">
     Your champion Pool<br/><br/>
     <div class="col1">
-        <div class="ligne1"><strong>Top</strong><br/><a href="@{ChampionsController.create(ligne='Top',preference=tailleListes.get(1)+1,nombreChampions=tailleListes)}">&{'Modifier'}</a></div>
+        <div class="ligne1"><strong>Top</strong><br/><a href="@{ChampionsController.create('Top','monCamp')}">&{'Modifier'}</a></div>
         #{list items:listeChampion, as:'champion'}
         #{if champion.ligne.equals("Top")}
         <div class="ligne"><img class="ligne" src=${champion.getUrlImage()} title="${champion.nom}" border="4"></div>
         #{/if}
         #{/list}
+        <!-- affiche des cases vides -->
         #{if tailleListes.get(0)<tailleListes.get(10)}
         #{list items:1..tailleListes.get(10)-tailleListes.get(0), as:'i'}
         <div class="ligne"></div>
@@ -21,12 +22,13 @@
         #{/if}
     </div>
     <div class="col">
-        <div class="ligne1"><strong>Jungle</strong><br/><a href="@{ChampionsController.create(ligne='Jungle',preference=tailleListes.get(3)+1,nombreChampions=tailleListes)}">&{'Modifier'}</a></div>
+        <div class="ligne1"><strong>Jungle</strong><br/><a href="@{ChampionsController.create('Jungle','monCamp')}">&{'Modifier'}</a></div>
         #{list items:listeChampion, as:'champion'}
         #{if champion.ligne.equals("Jungle")}
         <div class="ligne"><img class="ligne" src=${champion.getUrlImage()} title="${champion.nom}" border="4"></div>
         #{/if}
         #{/list}
+        <!-- affiche des cases vides -->
         #{if tailleListes.get(2)<tailleListes.get(10)}
         #{list items:1..tailleListes.get(10)-tailleListes.get(2), as:'i'}
         <div class="ligne"></div>
@@ -34,12 +36,13 @@
         #{/if}
     </div>
     <div class="col">
-        <div class="ligne1"><strong>Mid</strong><br/><a href="@{ChampionsController.create(ligne='Mid',preference=tailleListes.get(5)+1,nombreChampions=tailleListes)}">&{'Modifier'}</a></div>
+        <div class="ligne1"><strong>Mid</strong><br/><a href="@{ChampionsController.create('Mid','monCamp')}">&{'Modifier'}</a></div>
         #{list items:listeChampion, as:'champion'}
         #{if champion.ligne.equals("Mid")}
         <div class="ligne"><img class="ligne" src=${champion.getUrlImage()} title="${champion.nom}" border="4"></div>
         #{/if}
         #{/list}
+        <!-- affiche des cases vides -->
         #{if tailleListes.get(4)<tailleListes.get(10)}
         #{list items:1..tailleListes.get(10)-tailleListes.get(4), as:'i'}
         <div class="ligne"></div>
@@ -47,12 +50,13 @@
         #{/if}
     </div>
     <div class="col">
-        <div class="ligne1"><strong>Adc</strong><br/><a href="@{ChampionsController.create(ligne='Adc',preference=tailleListes.get(7)+1,nombreChampions=tailleListes)}">&{'Modifier'}</a></div>
+        <div class="ligne1"><strong>Adc</strong><br/><a href="@{ChampionsController.create('Adc','monCamp')}">&{'Modifier'}</a></div>
         #{list items:listeChampion, as:'champion'}
         #{if champion.ligne.equals("Adc")}
         <div class="ligne"><img class="ligne" src=${champion.getUrlImage()} title="${champion.nom}" border="4"></div>
         #{/if}
         #{/list}
+        <!-- affiche des cases vides -->
         #{if tailleListes.get(6)<tailleListes.get(10)}
         #{list items:1..tailleListes.get(10)-tailleListes.get(6), as:'i'}
         <div class="ligne"></div>
@@ -60,12 +64,13 @@
         #{/if}
     </div>
     <div class="col">
-        <div class="ligne1"><strong>Support</strong><br/><a href="@{ChampionsController.create(ligne='Support',preference=tailleListes.get(9)+1,nombreChampions=tailleListes)}">&{'Modifier'}</a></div>
+        <div class="ligne1"><strong>Support</strong><br/><a href="@{ChampionsController.create('Support','monCamp')}">&{'Modifier'}</a></div>
         #{list items:listeChampion, as:'champion'}
         #{if champion.ligne.equals("Support")}
         <div class="ligne"><img class="ligne" src=${champion.getUrlImage()} title="${champion.nom}" border="4"></div>
         #{/if}
         #{/list}
+        <!-- affiche des cases vides -->
         #{if tailleListes.get(8)<tailleListes.get(10)}
         #{list items:1..tailleListes.get(10)-tailleListes.get(8), as:'i'}
         <div class="ligne"></div>
@@ -77,12 +82,13 @@
 <div id="tabPoolChamp2" class="toggleAdverseChampionPool" style="display:none">
     Adverse champion Pool<br/><br/>
     <div class="col1">
-        <div class="ligne1"><strong>Top</strong><br/><a href="@{ChampionsController.createAdverse(ligne='Top',preference=tailleAdverseListes.get(1)+1,nombreChampions=tailleAdverseListes)}">&{'Modifier'}</a></div>
+        <div class="ligne1"><strong>Top</strong><br/><a href="@{ChampionsController.create('Top','autreCamp')}">&{'Modifier'}</a></div>
         #{list items:listeAdverseChampion, as:'champion'}
         #{if champion.ligne.equals("Top")}
         <div class="ligne"><img class="ligne" src=${champion.getUrlImage()} title="${champion.nom}" border="4"></div>
         #{/if}
         #{/list}
+        <!-- affiche des cases vides -->
         #{if tailleAdverseListes.get(0)<tailleAdverseListes.get(10)}
         #{list items:1..tailleAdverseListes.get(10)-tailleAdverseListes.get(0), as:'i'}
         <div class="ligne"></div>
@@ -90,12 +96,13 @@
         #{/if}
     </div>
     <div class="col">
-        <div class="ligne1"><strong>Jungle</strong><br/><a href="@{ChampionsController.createAdverse(ligne='Jungle',preference=tailleListes.get(3)+1,nombreChampions=tailleAdverseListes)}">&{'Modifier'}</a></div>
+        <div class="ligne1"><strong>Jungle</strong><br/><a href="@{ChampionsController.create('Jungle','autreCamp')}">&{'Modifier'}</a></div>
         #{list items:listeAdverseChampion, as:'champion'}
         #{if champion.ligne.equals("Jungle")}
         <div class="ligne"><img class="ligne" src=${champion.getUrlImage()} title="${champion.nom}" border="4"></div>
         #{/if}
         #{/list}
+        <!-- affiche des cases vides -->
         #{if tailleAdverseListes.get(2)<tailleAdverseListes.get(10)}
         #{list items:1..tailleAdverseListes.get(10)-tailleAdverseListes.get(2), as:'i'}
         <div class="ligne"></div>
@@ -103,12 +110,13 @@
         #{/if}
     </div>
     <div class="col">
-        <div class="ligne1"><strong>Mid</strong><br/><a href="@{ChampionsController.createAdverse(ligne='Mid',preference=tailleListes.get(5)+1,nombreChampions=tailleAdverseListes)}">&{'Modifier'}</a></div>
+        <div class="ligne1"><strong>Mid</strong><br/><a href="@{ChampionsController.create('Mid','autreCamp')}">&{'Modifier'}</a></div>
         #{list items:listeAdverseChampion, as:'champion'}
         #{if champion.ligne.equals("Mid")}
         <div class="ligne"><img class="ligne" src=${champion.getUrlImage()} title="${champion.nom}" border="4"></div>
         #{/if}
         #{/list}
+        <!-- affiche des cases vides -->
         #{if tailleAdverseListes.get(4)<tailleAdverseListes.get(10)}
         #{list items:1..tailleAdverseListes.get(10)-tailleAdverseListes.get(4), as:'i'}
         <div class="ligne"></div>
@@ -116,7 +124,7 @@
         #{/if}
     </div>
     <div class="col">
-        <div class="ligne1"><strong>Adc</strong><br/><a href="@{ChampionsController.createAdverse(ligne='Adc',preference=tailleListes.get(7)+1,nombreChampions=tailleAdverseListes)}">&{'Modifier'}</a></div>
+        <div class="ligne1"><strong>Adc</strong><br/><a href="@{ChampionsController.create('Adc','autreCamp')}">&{'Modifier'}</a></div>
         #{list items:listeAdverseChampion, as:'champion'}
         #{if champion.ligne.equals("Adc")}
         <div class="ligne"><img class="ligne" src=${champion.getUrlImage()} title="${champion.nom}" border="4"></div>
@@ -129,12 +137,13 @@
         #{/if}
     </div>
     <div class="col">
-        <div class="ligne1"><strong>Support</strong><br/><a href="@{ChampionsController.createAdverse(ligne='Support',preference=tailleListes.get(9)+1,nombreChampions=tailleAdverseListes)}">&{'Modifier'}</a></div>
+        <div class="ligne1"><strong>Support</strong><br/><a href="@{ChampionsController.create('Support','autreCamp')}">&{'Modifier'}</a></div>
         #{list items:listeAdverseChampion, as:'champion'}
         #{if champion.ligne.equals("Support")}
         <div class="ligne"><img class="ligne" src=${champion.getUrlImage()} title="${champion.nom}" border="4"></div>
         #{/if}
         #{/list}
+        <!-- affiche des cases vides -->
         #{if tailleAdverseListes.get(8)<tailleAdverseListes.get(10)}
         #{list items:1..tailleAdverseListes.get(10)-tailleAdverseListes.get(8), as:'i'}
         <div class="ligne"></div>
@@ -146,7 +155,7 @@
 <div id="tabComboChamp">
     <div id="nbreComboChamp" align="center">
         #{if poolChampions.size()>40}
-        40 meilleures combinaisons parmi ${poolChampions.size()} :
+        40 meilleures combinaisons parmi ${poolChampions.size()}
         #{/if}
         #{else}
         ${poolChampions.size()} combinaisons possibles

@@ -14,11 +14,17 @@ public class ChampionService {
 
     public static void enregistrer(Champion champion) {
         if(!champion.nom.isEmpty()) {
+            List<Champion> listeToFindMaxPrefValue = Champion.find("ligne=? AND camp=?",champion.ligne,champion.camp).fetch();
             List<Champion> liste = Champion.find("nom = ? AND ligne=? AND camp=?",champion.nom,champion.ligne,champion.camp).fetch();
             if(liste.size() ==0){
+                champion.preference=getMaxValuePreference(listeToFindMaxPrefValue)+1;
                 champion.save();
             }
         }
+    }
+
+    public static List<Champion> getAllChampionsFromLane(String ligne,String camp){
+        return Champion.find("ligne=? AND camp=?",ligne,camp).fetch();
     }
 
     public static void supprimer(Long idChampion) {

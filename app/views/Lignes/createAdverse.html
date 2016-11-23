@@ -1,0 +1,78 @@
+
+#{extends 'mainRor.html'/}
+
+#{set title:'Edit ' + ligne +' adverse' /}
+
+<div class="background">
+    <a href="/">Retourner à l'accueil</a><br/>
+    <a href="/liste">Retourner à la sélection</a>
+
+    <br/><br/>
+
+    <div class="tableauGrand">
+        #{if listeChampion.size() > 0}
+        <div class="colGrande">Impossible d'ajouter un autre champion (1 max.)</div>
+        #{/if}
+        #{else}
+        <div class="colGrande">Ajouter un Champion;
+            <form action="@{ChampionsController.create(ligne,'autreCamp')}" method="post">
+                <select name="champion.nom">
+                    #{render 'tags/dropDownAllChamp.html'/}
+                </select>
+                <input type="hidden" name="champion.ligne" value=${ligne}>
+                <input type="hidden" name="champion.camp" value="autreCamp">
+                <input type="submit" value="Ok">
+            </form>
+        </div>
+        #{/else}
+    </div>
+
+    <form action="@{ChampionsController.changementPreference(ligne,'autreCamp')}" method="post">
+        <div class="colonneDroite">
+            #{list items:listeChampion, as:'champion'}
+            #{if champion.ligne.equals(ligne)}
+            <div class="alignementDroite">
+                <div class="colCreerGauche">
+                    <div class="toggleClassement"># ${champion.preference}</div>
+                    <div class="toggleClassement" style="display: none">
+                        #
+                        <select name="championPreference">
+                            <option value='${champion.preference}'>${champion.preference}</option>
+                            #{list items:1..listeChampion.size(), as:'i'}
+                            #{if i!=champion.preference}
+                            <option value='${i}'>${i}</option>
+                            #{/if}
+                            #{/list}
+                            <input type="hidden" name="idChampion" value=${champion.id}>
+                        </select>
+                    </div>
+                </div>
+                <div class="colCreerIcone">
+                    <div class="icone">
+                        <a href="@{ChampionsController.delete(champion.id,ligne,'autreCamp')}"><img class="icone" src="http://publicdomainvectors.org/photos/rodentia-icons_emblem-unreadable.png" title="Retirer ${champion.nom} de la sélection"></a>
+                    </div>
+                </div>
+                <div class="colCreerDroite">
+                    <div class="nomChampionCreer">${champion.nom}</div>
+                </div>
+                <div class="colCreerImage">
+                    <img class="modif" src=${champion.getUrlImage()} title="${champion.nom}" border="4">
+                </div>
+            </div>
+            #{/if}
+            #{/list}
+        </div>
+        <div class="colGrande">
+            <input class="toggleClassement" style="display: none" class="validationPref" type="submit" value="Valider changement préférences">
+        </div>
+    </form>
+    <div class="colGrande">
+        <button class="toggleClassement">Modifier classement</button>
+    </div>
+</div>
+
+#{set 'moreScripts'}
+#{script 'lol.js'/}
+#{/set}
+
+
