@@ -10,6 +10,7 @@ import services.ChampionService;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static java.lang.Integer.bitCount;
 import static java.lang.Integer.parseInt;
 
 /**
@@ -394,11 +395,53 @@ public class ChampionsController extends Controller {
         return true;
     }
 
+    public static int taillePref(Pref pref){
+        int taille=0;
+        if(pref.nomChampionTop.length()>0){
+            taille=taille+1;
+        }
+        if(pref.nomChampionJungle.length()>0){
+            taille=taille+1;
+        }
+        if(pref.nomChampionMid.length()>0){
+            taille=taille+1;
+        }
+        if(pref.nomChampionAdc.length()>0){
+            taille=taille+1;
+        }
+        if(pref.nomChampionSupport.length()>0){
+            taille=taille+1;
+        }
+        return taille;
+    }
+
     public static Integer notation(Pool pool){
-//        if (pool.championSupport.nom.equals("Anivia") && pool.championAdc.nom.equals("Blitzcrank")) {
-//            pool.note = pool.note + 1;
-//        }
-        return pool.note;
+        Collection<Pref> listePref = ChampionService.getAllPref();
+        int note=0;
+        int noteMax=0;
+        for (Pref pref:listePref) {
+            if(pref.nomChampionTop.equals(pool.championTop.nom)){
+                note=note+1;
+            }
+            if(pref.nomChampionJungle.equals(pool.championJungle.nom)){
+                note=note+1;
+            }
+            if(pref.nomChampionMid.equals(pool.championMid.nom)){
+                note=note+1;
+            }
+            if(pref.nomChampionAdc.equals(pool.championAdc.nom)){
+                note=note+1;
+            }
+            if(pref.nomChampionSupport.equals(pool.championSupport.nom)){
+                note=note+1;
+            }
+            if(note>noteMax){
+                noteMax=0;
+                noteMax=noteMax+note;
+            }
+            note=0;
+        }
+        return noteMax-1;
     }
 
     public static List<Pool> trierParNote(List<Pool> listePool){

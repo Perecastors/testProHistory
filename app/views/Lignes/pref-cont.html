@@ -87,18 +87,28 @@
     <div id="imageComboChamp">
         <div class="col1">
             #{list items:listePref, as:'pref'}
-            <div class="ligne">${pref.nomChampionTop}</div>
+            <div class="ligne"><img class="ligne" src=${pref.getUrlImageTop()} title="${pref.nomChampionTop}" border="4"></div>
             #{/list}
         </div>
         <div class="col">
+            #{list items:listePref, as:'pref'}
+            <div class="ligne"><img class="ligne" src=${pref.getUrlImageJungle()} title="${pref.nomChampionJungle}" border="4"></div>
+            #{/list}
         </div>
         <div class="col">
+            #{list items:listePref, as:'pref'}
+            <div class="ligne"><img class="ligne" src=${pref.getUrlImageMid()} title="${pref.nomChampionMid}" border="4"></div>
+            #{/list}
         </div>
         <div class="col">
+            #{list items:listePref, as:'pref'}
+            <div class="ligne"><img class="ligne" src=${pref.getUrlImageAdc()} title="${pref.nomChampionAdc}" border="4"></div>
+            #{/list}
         </div>
         <div class="col">
-        </div>
-        <div class="col">
+            #{list items:listePref, as:'pref'}
+            <div class="ligne"><img class="ligne" src=${pref.getUrlImageSupport()} title="${pref.nomChampionSupport}" border="4"></div>
+            #{/list}
         </div>
     </div>
 </div>

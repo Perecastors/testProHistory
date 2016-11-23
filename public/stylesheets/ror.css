@@ -36,6 +36,13 @@
     overflow: auto;
 }
 
+#supPref{
+    width: 60px;
+    text-align:center;
+    border-right: 1px solid red;
+    float:left;
+}
+
 div.col{
     width: 60px;
     text-align:center;
@@ -87,6 +94,11 @@ div.tableauGrand{
     width: 600px;
 }
 
+div.colGrande{
+    float:left;
+    width:200px;
+}
+
 div.colPref{
     width: 142px;
     text-align:center;
@@ -110,7 +122,7 @@ div.boutonColPrefsansbordure{
 }
 
 .boutonPref{
-    margin-top: 105px;
+    margin-top: 124px;
 }
 
 .formPref{
@@ -118,7 +130,6 @@ div.boutonColPrefsansbordure{
 }
 
 div.col1{
-
     width: 61px;
     text-align:center;
     border-left: 1px solid red;
@@ -127,7 +138,6 @@ div.col1{
 }
 
 div.colPref1{
-
     width: 143px;
     text-align:center;
     border-left: 1px solid red;
@@ -136,7 +146,6 @@ div.colPref1{
 }
 
 div.ligne1{
-
     width: 100%;
     text-align:center;
     border-top: 1px solid red;
