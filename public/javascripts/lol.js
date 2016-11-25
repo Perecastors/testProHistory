@@ -4,10 +4,6 @@
 
 $(document).ready(function() {
 
-/*$( "button.toggleSuppression" ).click(function() {
-    $( ".toggleSuppression" ).toggle();
-});*/
-
 $( "button.toggleClassement" ).click(function() {
     $( ".toggleClassement" ).toggle();
 });
