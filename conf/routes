@@ -20,7 +20,7 @@ GET    /liste                                   ChampionsController.afficher
 GET    /deleteChampion                          ChampionsController.delete(id)
 GET    /deleteChampionAdverse                   ChampionsController.deleteAdverse(id)
 POST   /changementPref                          ChampionsController.changementPreference
-POST   /test                                    ChampionsController.test2
+GET    /jQuery                                  ChampionsController.test
 GET    /pref-cont                               ChampionsController.gestionPrefCont
 POST   /pref-cont                               ChampionsController.ajouterPref
 
