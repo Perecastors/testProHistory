@@ -17,7 +17,7 @@ POST   /ajouterChampion                         ChampionsController.save
 GET    /liste                                   ChampionsController.afficher
 GET    /deleteChampion                          ChampionsController.delete(id)
 POST   /changementPref                          ChampionsController.changementPreference(ligne,championPreference,idChampion,camp)
-POST   /test                                    ChampionsController.test2
+GET    /jQuery                                  ChampionsController.test
 GET    /pref-cont                               ChampionsController.gestionPrefCont
 POST   /pref-cont                               ChampionsController.ajouterPref
 

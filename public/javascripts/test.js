@@ -1,4 +1,9 @@
 $( ".testBoutonJquery" ).click(function() {
     var texte = $('.testTexteJquery').val();
-    $("#resultText").text(texte);
+    $("#resultText").html(texte);
+});
+
+$( ".testBoutonJquery2" ).click(function() {
+    var texte = $('#resultText').val();
+    $("#resultText2").html("test"+texte);
 });
