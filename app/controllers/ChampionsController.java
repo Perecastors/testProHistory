@@ -71,7 +71,7 @@ public class ChampionsController extends Controller {
     }
 
     public static void test(){
-        renderTemplate("/Lignes/jQuery.html");
+        renderTemplate("/Lignes/testjQuery.html");
     }
 }
 
