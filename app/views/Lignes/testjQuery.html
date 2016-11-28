@@ -8,20 +8,46 @@
 <body>
 
 <input type="text" class="testTexteJquery" name="truc">
-<input type="button" class="testBoutonJquery" value="Go">
-<input type="button" class="testBoutonJquery2" value="Go2">
+<input type="button" onClick="traduitHtml();" value="Go">
+<input type="button" onClick="afficheHtml();" value="Go2">
 
 <div class="testDroite">
-    <span class="testTexte">texte : <span id="resultText"></span><span id="resultText2"></span></span>
+    <span class="testTexte">texte : <span id="resultText"></span></span>
+    <input type="text" id="resultText2"><br/><br/><br/>
+    <span class="testTexte">texte select : <span id="resultText3"></span></span><br/>
+    <span class="testTexte">valeur select : <span id="resultText4"></span></span><br/><br/><br/>
 </div>
 
 </br><br/><br/>
-<select>
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
+<select id="valSelect" onchange="afficheTt();">
+    <option value="o">toto</option>
+    <option value="a">tata</option>
+    <option value="i">titi</option>
+    <option value="u">tutu</option>
 </select>
+<input type="button" onClick="afficheTt();" value="Go3">
+<input type="button" class="boutonAuto" onClick="afficheTutu();" value="Go4"><br/><br/><br/><br/>
+
+<div style="float:left" onchange="afficheDouble()">
+    <input type="radio" name="tt" value="o">toto<br/>
+    <input type="radio" name="tt" value="a">tata<br/>
+    <input type="radio" name="tt" value="i">titi<br/>
+    <input type="radio" name="tt" value="u">tutu
+</div>
+<div style="float:left" class="radio2">
+    <input type="radio" name="tt2" value="o">toto<br>
+    <input type="radio" name="tt2" value="a">tata<br>
+    <input type="radio" name="tt2" value="i">titi<br/>
+    <input type="radio" name="tt2" value="u">tutu
+</div>
+
+<div style="clear:both">
+    <br/><br/><br/>
+    <input type="button" onClick="clickAuto();" value="Go5">
+</div>
+
+<input type="button" onClick="compteFils();" value="Count">
+<span class="result">truc</span>
 
 <script src="//code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="\public\javascripts\test.js"></script>
