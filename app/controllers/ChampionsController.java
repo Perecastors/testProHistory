@@ -64,5 +64,14 @@ public class ChampionsController extends Controller {
         ChampionService.supprimer(idChampion);
         create(ligne,camp);
     }
+
+    public static void deletePref(Long idPref) {
+        ChampionService.supprimerPref(idPref);
+        gestionPrefCont();
+    }
+
+    public static void test(){
+        renderTemplate("/Lignes/jQuery.html");
+    }
 }
 

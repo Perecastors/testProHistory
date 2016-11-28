@@ -31,6 +31,10 @@ public class ChampionService {
         Champion.delete("id=?",idChampion);
     }
 
+    public static void supprimerPref(Long idPref) {
+        Pref.delete("id=?",idPref);
+    }
+
     public static void changerPreference(List<Long> idChampion,List<Integer> championPreference) {
         for (int i=0;i<idChampion.size();i++){
             Champion champion = Champion.findById(idChampion.get(i));

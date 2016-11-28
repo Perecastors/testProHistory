@@ -83,51 +83,26 @@
             <div class="ligne1"><strong>Support</strong></div>
         </div>
     </div>
-    <br/>
 
-    <!--<div id="imageComboChamp">-->
-        <!--<div class="col1">-->
-            <!--#{list items:listePref, as:'pref'}-->
-            <!--<div class="ligne"><img class="ligne" src=${pref.getUrlImageTop()} title="${pref.nomChampionTop}" border="4"></div>-->
-            <!--#{/list}-->
-        <!--</div>-->
-        <!--<div class="col">-->
-            <!--#{list items:listePref, as:'pref'}-->
-            <!--<div class="ligne"><img class="ligne" src=${pref.getUrlImageJungle()} title="${pref.nomChampionJungle}" border="4"></div>-->
-            <!--#{/list}-->
-        <!--</div>-->
-        <!--<div class="col">-->
-            <!--#{list items:listePref, as:'pref'}-->
-            <!--<div class="ligne"><img class="ligne" src=${pref.getUrlImageMid()} title="${pref.nomChampionMid}" border="4"></div>-->
-            <!--#{/list}-->
-        <!--</div>-->
-        <!--<div class="col">-->
-            <!--#{list items:listePref, as:'pref'}-->
-            <!--<div class="ligne"><img class="ligne" src=${pref.getUrlImageAdc()} title="${pref.nomChampionAdc}" border="4"></div>-->
-            <!--#{/list}-->
-        <!--</div>-->
-        <!--<div class="col">-->
-            <!--#{list items:listePref, as:'pref'}-->
-            <!--<div class="ligne"><img class="ligne" src=${pref.getUrlImageSupport()} title="${pref.nomChampionSupport}" border="4"></div>-->
-            <!--#{/list}-->
-        <!--</div>-->
-    <!--</div>-->
     #{list items:listePref, as:'pref'}
     <div class="ligneImagesPref">
         <div class="colImagesPref1">
-            <img class="ligne" src=${pref.getUrlImageTop()} title="${pref.nomChampionTop}" border="4">
+            <img class="ligne" src=${pref.getUrlImagePref(pref.nomChampionTop)} title="${pref.nomChampionTop}" border="4">
         </div>
         <div class="colImagesPref">
-            <img class="ligne" src=${pref.getUrlImageJungle()} title="${pref.nomChampionJungle}" border="4">
+            <img class="ligne" src=${pref.getUrlImagePref(pref.nomChampionJungle)} title="${pref.nomChampionJungle}" border="4">
         </div>
         <div class="colImagesPref">
-            <img class="ligne" src=${pref.getUrlImageMid()} title="${pref.nomChampionMid}" border="4">
+            <img class="ligne" src=${pref.getUrlImagePref(pref.nomChampionMid)} title="${pref.nomChampionMid}" border="4">
         </div>
         <div class="colImagesPref">
-            <img class="ligne" src=${pref.getUrlImageAdc()} title="${pref.nomChampionAdc}" border="4">
+            <img class="ligne" src=${pref.getUrlImagePref(pref.nomChampionAdc)} title="${pref.nomChampionAdc}" border="4">
         </div>
         <div class="colImagesPref">
-            <img class="ligne" src=${pref.getUrlImageSupport()} title="${pref.nomChampionSupport}" border="4">
+            <img class="ligne" src=${pref.getUrlImagePref(pref.nomChampionSupport)} title="${pref.nomChampionSupport}" border="4">
+        </div>
+        <div class="colIconePref">
+            <a href="@{ChampionsController.deletePref(pref.id)}"><img class="icone" src="http://publicdomainvectors.org/photos/rodentia-icons_emblem-unreadable.png" title="Retirer cette combinaison"></a>
         </div>
     </div>
     #{/list}

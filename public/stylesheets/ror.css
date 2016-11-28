@@ -26,7 +26,7 @@
 
 #tabComboChamp{
     float:right;
-    width:316px;
+    width:346px;
 }
 
 #nbreComboChamp{
@@ -127,6 +127,7 @@ div.boutonColPrefsansbordure{
 
 .boutonPref{
     margin-top: 124px;
+    margin-left: 5px;
 }
 
 .formPref{
@@ -171,10 +172,10 @@ div.lignePref{
  }
 
   div.ligneImagesPref{
-     width:301px;
+     width:331px;
      height:60px;
      text-align:center;
-     border-bottom: 1px solid red;
+     float:left;
   }
 
  div.colImagesPref1{
@@ -183,6 +184,7 @@ div.lignePref{
      text-align:center;
      border-left: 1px solid red;
      border-right: 1px solid red;
+     border-bottom: 1px solid red;
      float:left;
  }
 
@@ -191,8 +193,17 @@ div.lignePref{
       height:60px;
       text-align:center;
       border-right: 1px solid red;
+      border-bottom: 1px solid red;
       float:left;
   }
+
+   div.colIconePref{
+        width: 30px;
+        height:60px;
+        text-align:center;
+        float:left;
+        margin-top: 20px;
+    }
 
 div.ligneH{
     width: 100%;
@@ -243,8 +254,8 @@ img.icone{
 
 #milieu{
     float:left;
-    margin-left: 250px;
-    margin-right: 250px;
+    margin-left: 17%;
+    margin-right: 17%;
 }
 
 button.milieu{
