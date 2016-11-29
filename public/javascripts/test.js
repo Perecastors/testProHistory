@@ -29,6 +29,29 @@ function clickAuto(){
 };
 
 function compteFils(){
-    var fils = $( ".testDroite" ).find("*").length;
-    $( "span.result" ).text( "There are " + fils + " fils.";
+    var fils = $( ".testDroite" ).children();
+    $( "span.result" ).text( "Il y a " + fils.length + " fils dans la div 'testDroite'");
+    $( ".result2" ).text("");
+    fils.each(function() {
+        var nom = $(this).prop("tagName");
+        $( ".result2" ).append("<li>"+nom+"</li>");
+    });
 };
+
+jQuery('#datetimepicker').datetimepicker({
+ i18n:{
+  de:{
+   months:[
+    'Januar','Februar','März','April',
+    'Mai','Juni','Juli','August',
+    'September','Oktober','November','Dezember',
+   ],
+   dayOfWeek:[
+    "So.", "Mo", "Di", "Mi",
+    "Do", "Fr", "Sa.",
+   ]
+  }
+ },
+ timepicker:false,
+ formatDate:'d.m.Y'
+});

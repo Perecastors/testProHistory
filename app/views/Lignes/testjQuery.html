@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Test jQuery</title>
+    <link rel="stylesheet" type="text/css" href="\public\datetimepicker-master\jquery.datetimepicker.css">
     <link href="\public\stylesheets\test.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -28,7 +29,7 @@
 <input type="button" onClick="afficheTt();" value="Go3">
 <input type="button" class="boutonAuto" onClick="afficheTutu();" value="Go4"><br/><br/><br/><br/>
 
-<div style="float:left" onchange="afficheDouble()">
+<div class="truc" style="float:left" onchange="afficheDouble()">
     <input type="radio" name="tt" value="o">toto<br/>
     <input type="radio" name="tt" value="a">tata<br/>
     <input type="radio" name="tt" value="i">titi<br/>
@@ -46,10 +47,19 @@
     <input type="button" onClick="clickAuto();" value="Go5">
 </div>
 
+<br/><br/><br/>
+
 <input type="button" onClick="compteFils();" value="Count">
-<span class="result">truc</span>
+<span class="result"></span><br/>
+Leur nom : <br/>
+<ul class="result2">
+
+</ul><br/><br/><br/>
+
+<input id="datetimepicker" type="text" >
 
 <script src="//code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="\public\datetimepicker-master\jquery.datetimepicker.js"></script>
 <script type="text/javascript" src="\public\javascripts\test.js"></script>
 
 </body>
