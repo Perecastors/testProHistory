@@ -14,11 +14,12 @@ function affichage(){
     $("#duree").html("Durée : "+json_object.Runtime);
     $("#description").html("Synopsis : "+json_object.Plot);
     var tableauActeurs = json_object.Actors.split(",");
-    var listeActeurs ="truc";
+    var listeActeurs ="";
     $.each(tableauActeurs,function(i,item){
-       listeActeurs+item;
-       });
-    $("#acteurs").html(listeActeurs);
+       listeActeurs=listeActeurs.concat(item+",");
+    });
+
+    $("#acteurs").html(listeActeurs.slice(0,-1));
 
 }
 
