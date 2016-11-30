@@ -51,7 +51,6 @@ function importListeJson(){
      $.ajax({
        url : "http://www.omdbapi.com/?",
        dataType : 'json',
-       async:false,
        data : 's='+titreFilm,
        success : function(data, statut,sucess){
             $.each(data.Search,function(i,item){
@@ -69,7 +68,30 @@ function importListeJson(){
 $( function() {
     $( "#tags" ).autocomplete({
         minLength: 2,
-        source: function(){return importListeJson()}
+        source: function(request,response){
+
+             var titreFilm = request.term;
+             var listeFilm =[];
+             $.ajax({
+               url : "http://www.omdbapi.com/?",
+               dataType : 'json',
+               data : 's='+titreFilm,
+               success : function(data, statut,sucess){
+                    $.each(data.Search,function(i,item){
+                        listeFilm.push(item.Title);
+                    });
+                    listeFilm.sort();
+                    console.log(request);
+                    response(listeFilm);
+                    console.log(listeFilm);
+               },
+               error : function(resultat, statut, erreur){
+                    alert(statut);
+                    return listeFilm;
+               }
+            });
+
+        }
     });
   } );
 
