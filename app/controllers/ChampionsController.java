@@ -70,8 +70,15 @@ public class ChampionsController extends Controller {
         gestionPrefCont();
     }
 
+
+
+
     public static void test(){
         renderTemplate("/Lignes/testjQuery.html");
+    }
+
+    public static void api(){
+        renderTemplate("/Lignes/testApi.html");
     }
 }
 

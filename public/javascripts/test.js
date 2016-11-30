@@ -38,20 +38,9 @@ function compteFils(){
     });
 };
 
-jQuery('#datetimepicker').datetimepicker({
- i18n:{
-  de:{
-   months:[
-    'Januar','Februar','März','April',
-    'Mai','Juni','Juli','August',
-    'September','Oktober','November','Dezember',
-   ],
-   dayOfWeek:[
-    "So.", "Mo", "Di", "Mi",
-    "Do", "Fr", "Sa.",
-   ]
-  }
- },
- timepicker:false,
- formatDate:'d.m.Y'
+$( function() {
+    $( "#datepicker" ).datepicker({
+                                    dateFormat: "dd/mm/yy"
+                                  });
 });
+

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test API</title>
+    <link href="\public\stylesheets\test.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div>
+    <input type="text" placeholder="Titre du film" autofocus>
+    <input type="button" onclick="affichage()" value="Go">
+</div>
+
+<div class="affiche"></div>
+<div id="blabla">
+    <div id="titre&note">
+        <span id="titre"> Titre du film : </span><span id="note"> Note</span><br/><br/>
+    </div>
+    <span id="dateSortie">Date de sortie - </span><br/>
+    <span id="duree">Durée</span><br/><br/>
+    <div class="description">
+        Description : <span id="description"></span>
+    </div>
+    <span id="realisateur">Réalisateur - </span><br/>
+    <span id="acteurs">Acteurs :</span><br/>
+    Langue :
+</div>
+
+
+
+<script src="//code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="\public\jquery-ui-1.12.1.custom\jquery-ui.js"></script>
+<script type="text/javascript" src="\public\javascripts\Api.js"></script>
+
+</body>
+</html>
