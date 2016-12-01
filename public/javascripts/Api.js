@@ -1,5 +1,4 @@
 function affichage(data){
-    console.log(data);
     var json_object = data;
     if(json_object.Title == undefined){
         alert(json_object.Error);
@@ -44,33 +43,12 @@ function importJson(){
     });
 }
 
-function importListeJson(){
-
-     var titreFilm = $('#tags').val();
-     var listeFilm =[];
-     $.ajax({
-       url : "http://www.omdbapi.com/?",
-       dataType : 'json',
-       data : 's='+titreFilm,
-       success : function(data, statut,sucess){
-            $.each(data.Search,function(i,item){
-                listeFilm.push(item.Title);
-            });
-            console.log(listeFilm);
-            return listeFilm;
-       },
-       error : function(resultat, statut, erreur){
-            alert(statut);
-       }
-    });
-}
-
 $( function() {
-    $( "#tags" ).autocomplete({
+    $( "#titreDuFilm" ).autocomplete({
         minLength: 2,
-        source: function(request,response){
+        source: function(requete,reponse){
 
-             var titreFilm = request.term;
+             var titreFilm = requete.term;
              var listeFilm =[];
              $.ajax({
                url : "http://www.omdbapi.com/?",
@@ -81,30 +59,15 @@ $( function() {
                         listeFilm.push(item.Title);
                     });
                     listeFilm.sort();
-                    console.log(request);
-                    response(listeFilm);
-                    console.log(listeFilm);
+                    reponse(listeFilm);
                },
                error : function(resultat, statut, erreur){
                     alert(statut);
-                    return listeFilm;
+                    reponse(listeFilm);
+                    console.log(erreur);
                }
             });
 
         }
     });
   } );
-
-function toto(){
-    return [ "The Matrix", "The Matrix Reloaded", "The Matrix Revolutions", "The Matrix Revisited", "Enter the Matrix", "The Matrix: Path of Neo", "CR: Enter the Matrix", "Armitage III: Dual Matrix", "Sex and the Matrix", "Buhera mátrix" ];
-}
-
-
-
-/*$(function(){
-   $("#demoJson").text("Résumé : "+json_object.Plot).append("<br/>");
-
-   $.each(json_object.Titles,function(i,item){
-   $("#demoJson").append(i+"-"+item.title+"<br/>");
-   });
-})*/

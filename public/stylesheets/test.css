@@ -36,3 +36,7 @@
     width: 600px;
     height: 200px;
 }
+
+.ui-autocomplete-loading {
+    background: white url("/public/jquery-ui-1.12.1.custom/images/ui-anim_basic_16x16.gif") right center no-repeat;
+  }

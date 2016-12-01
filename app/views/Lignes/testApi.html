@@ -6,13 +6,14 @@
     <link href="\public\stylesheets\test.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="/resources/demos/style.css">
+    <link href="public/jquery-ui-1.12.1.custom/jquery-ui.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 
 <div>
     <form onsubmit="importJson();return false;">
     <input id="titreDuFilm" type="text" placeholder="Titre du film" autofocus>
-    <input type="button" onclick="importListeJson()" value="Go">
+    <input type="button" onclick="importJson()" value="Go">
     <!--<input id="bouton" type="submit" value="Go">-->
     </form>
 </div>
@@ -32,12 +33,7 @@
     Acteurs : <span id="acteurs"></span><br/>
 </div>
 
-<div class="ui-widget">
-    <label for="tags">Tags: </label>
-    <input id="tags">
-</div>
-
-<script src="//code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="\public\jquery-ui-1.12.1.custom\external\jquery\jquery.js"></script>
 <script type="text/javascript" src="\public\jquery-ui-1.12.1.custom\jquery-ui.js"></script>
 <script type="text/javascript" src="\public\javascripts\Api.js"></script>
 
