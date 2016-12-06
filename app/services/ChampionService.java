@@ -58,6 +58,102 @@ public class ChampionService {
         return listePref;
     }
 
+    public static List<Pref> getAllPrefOrdre(List<Integer> ordre){
+        List<Pref> listePref = Pref.findAll();
+        int taille = listePref.size();
+        List<Pref> listePrefTriee= new ArrayList();
+        Pref PrefTriee = new Pref();
+        for (Pref pref : listePref) {
+            switch (ordre.get(0)) {
+                case 1:
+                    PrefTriee.nomChampionTop = pref.nomChampionTop;
+                    break;
+                case 2:
+                    PrefTriee.nomChampionTop = pref.nomChampionJungle;
+                    break;
+                case 3:
+                    PrefTriee.nomChampionTop = pref.nomChampionMid;
+                    break;
+                case 4:
+                    PrefTriee.nomChampionTop = pref.nomChampionAdc;
+                    break;
+                case 5:
+                    PrefTriee.nomChampionTop = pref.nomChampionSupport;
+                    break;
+            }
+            switch (ordre.get(1)) {
+                case 1:
+                    PrefTriee.nomChampionJungle = pref.nomChampionTop;
+                    break;
+                case 2:
+                    PrefTriee.nomChampionJungle = pref.nomChampionJungle;
+                    break;
+                case 3:
+                    PrefTriee.nomChampionJungle = pref.nomChampionMid;
+                    break;
+                case 4:
+                    PrefTriee.nomChampionJungle = pref.nomChampionAdc;
+                    break;
+                case 5:
+                    PrefTriee.nomChampionJungle = pref.nomChampionSupport;
+                    break;
+            }
+            switch (ordre.get(2)) {
+                case 1:
+                    PrefTriee.nomChampionMid = pref.nomChampionTop;
+                    break;
+                case 2:
+                    PrefTriee.nomChampionMid = pref.nomChampionJungle;
+                    break;
+                case 3:
+                    PrefTriee.nomChampionMid = pref.nomChampionMid;
+                    break;
+                case 4:
+                    PrefTriee.nomChampionMid = pref.nomChampionAdc;
+                    break;
+                case 5:
+                    PrefTriee.nomChampionMid = pref.nomChampionSupport;
+                    break;
+            }
+            switch (ordre.get(3)) {
+                case 1:
+                    PrefTriee.nomChampionAdc = pref.nomChampionTop;
+                    break;
+                case 2:
+                    PrefTriee.nomChampionAdc = pref.nomChampionJungle;
+                    break;
+                case 3:
+                    PrefTriee.nomChampionAdc = pref.nomChampionMid;
+                    break;
+                case 4:
+                    PrefTriee.nomChampionAdc = pref.nomChampionAdc;
+                    break;
+                case 5:
+                    PrefTriee.nomChampionAdc = pref.nomChampionSupport;
+                    break;
+            }
+            switch (ordre.get(4)) {
+                case 1:
+                    PrefTriee.nomChampionSupport = pref.nomChampionTop;
+                    break;
+                case 2:
+                    PrefTriee.nomChampionSupport = pref.nomChampionJungle;
+                    break;
+                case 3:
+                    PrefTriee.nomChampionSupport = pref.nomChampionMid;
+                    break;
+                case 4:
+                    PrefTriee.nomChampionSupport = pref.nomChampionAdc;
+                    break;
+                case 5:
+                    PrefTriee.nomChampionSupport = pref.nomChampionSupport;
+                    break;
+            }
+            listePrefTriee.add(PrefTriee);
+            }
+        return listePrefTriee;
+    }
+
     public static List<Integer> getMaxValueLigne(List<Champion> listeChampion){
         List<Integer> longueurLigne = new ArrayList();
         List<Integer> resultat = new ArrayList();
@@ -132,7 +228,7 @@ public class ChampionService {
         return listePoolTriee;
     }
 
-    public static List<Pool> combinaisons(List<Champion> listeChampion, List<Champion> listeAdverseChampion, int ordre){
+    public static List<Pool> combinaisons(List<Champion> listeChampion, List<Champion> listeAdverseChampion, List<Integer> ordre){
         int note=1;
         final int TOP=0;
         final int JUNGLE=4;
@@ -140,65 +236,26 @@ public class ChampionService {
         final int ADC=2;
         final int SUPPORT=3;
         List<Champion> listeStatique1 = new ArrayList();
+        listeStatique1=remplissageListe(listeChampion,ordre.get(0));
         List<Champion> listeStatique2 = new ArrayList();
+        listeStatique2=remplissageListe(listeChampion,ordre.get(1));
         List<Champion> listeStatique3 = new ArrayList();
+        listeStatique3=remplissageListe(listeChampion,ordre.get(2));
         List<Champion> listeStatique4 = new ArrayList();
+        listeStatique4=remplissageListe(listeChampion,ordre.get(3));
         List<Champion> listeStatique5 = new ArrayList();
+        listeStatique5=remplissageListe(listeChampion,ordre.get(4));
         List<Champion> liste1 = new ArrayList();
+        liste1.addAll(listeStatique1);
         List<Champion> liste2 = new ArrayList();
+        liste2.addAll(listeStatique2);
         List<Champion> liste3 = new ArrayList();
+        liste3.addAll(listeStatique3);
         List<Champion> liste4 = new ArrayList();
+        liste4.addAll(listeStatique4);
         List<Champion> liste5 = new ArrayList();
-        switch (ordre) {
-            case 1:
-                for(int i=0;i<listeChampion.size();i++){
-                    if(listeChampion.get(i).ligne.equals("Top")){
-                        listeStatique1.add(listeChampion.get(i));
-                    }
-                    if(listeChampion.get(i).ligne.equals("Jungle")){
-                        listeStatique2.add(listeChampion.get(i));
-                    }
-                    if(listeChampion.get(i).ligne.equals("Mid")){
-                        listeStatique3.add(listeChampion.get(i));
-                    }
-                    if(listeChampion.get(i).ligne.equals("Adc")){
-                        listeStatique4.add(listeChampion.get(i));
-                    }
-                    if(listeChampion.get(i).ligne.equals("Support")){
-                        listeStatique5.add(listeChampion.get(i));
-                    }
-                }
-                liste1.addAll(listeStatique1);
-                liste2.addAll(listeStatique2);
-                liste3.addAll(listeStatique3);
-                liste4.addAll(listeStatique4);
-                liste5.addAll(listeStatique5);
-                break;
-            case 2:
-                for(int i=0;i<listeChampion.size();i++){
-                    if(listeChampion.get(i).ligne.equals("Jungle")){
-                        listeStatique1.add(listeChampion.get(i));
-                    }
-                    if(listeChampion.get(i).ligne.equals("Top")){
-                        listeStatique2.add(listeChampion.get(i));
-                    }
-                    if(listeChampion.get(i).ligne.equals("Mid")){
-                        listeStatique3.add(listeChampion.get(i));
-                    }
-                    if(listeChampion.get(i).ligne.equals("Adc")){
-                        listeStatique4.add(listeChampion.get(i));
-                    }
-                    if(listeChampion.get(i).ligne.equals("Support")){
-                        listeStatique5.add(listeChampion.get(i));
-                    }
-                }
-                liste1.addAll(listeStatique1);
-                liste2.addAll(listeStatique2);
-                liste3.addAll(listeStatique3);
-                liste4.addAll(listeStatique4);
-                liste5.addAll(listeStatique5);
-                break;
-        }
+        liste5.addAll(listeStatique5);
+
         LinkedList<Champion> listeChampions = new LinkedList<>();
         LinkedList<Champion> listeTemp = new LinkedList<>();
         List<Pool> listePoolPossibles = new ArrayList();
@@ -221,7 +278,7 @@ public class ChampionService {
 //                            System.out.print(listeChampions.get(SUPPORT).name + "(support)");
 //                            System.out.println("");
                             Pool pool=creerPool(listeChampions);
-                            pool.note=notation(pool);
+                            pool.note=notation(pool,ordre);
                             listePoolPossibles.add(pool);
                             listeChampions.removeLast();
                             res = res + 1;
@@ -302,8 +359,8 @@ public class ChampionService {
         return pool;
     }
 
-    public static Integer notation(Pool pool){
-        Collection<Pref> listePref = ChampionService.getAllPref();
+    public static Integer notation(Pool pool, List<Integer> ordre){
+        Collection<Pref> listePref = ChampionService.getAllPrefOrdre(ordre);
         int note=0;
         int noteMax=0;
         for (Pref pref:listePref) {
@@ -367,5 +424,45 @@ public class ChampionService {
         if(compteur>1) {
             pref.save();
         }
+    }
+
+    public static List<Champion> remplissageListe(List<Champion> listeChampion, int ordre){
+        List<Champion> listeStatique = new ArrayList();
+        if(ordre==1){
+            for (int i = 0; i < listeChampion.size(); i++) {
+                if (listeChampion.get(i).ligne.equals("Top")) {
+                    listeStatique.add(listeChampion.get(i));
+                }
+            }
+        }
+        if(ordre==2){
+            for (int i = 0; i < listeChampion.size(); i++) {
+                if (listeChampion.get(i).ligne.equals("Jungle")) {
+                    listeStatique.add(listeChampion.get(i));
+                }
+            }
+        }
+        if(ordre==3){
+            for (int i = 0; i < listeChampion.size(); i++) {
+                if (listeChampion.get(i).ligne.equals("Mid")) {
+                    listeStatique.add(listeChampion.get(i));
+                }
+            }
+        }
+        if(ordre==4){
+            for (int i = 0; i < listeChampion.size(); i++) {
+                if (listeChampion.get(i).ligne.equals("Adc")) {
+                    listeStatique.add(listeChampion.get(i));
+                }
+            }
+        }
+        if(ordre==5){
+            for (int i = 0; i < listeChampion.size(); i++) {
+                if (listeChampion.get(i).ligne.equals("Support")) {
+                    listeStatique.add(listeChampion.get(i));
+                }
+            }
+        }
+        return listeStatique;
     }
 }

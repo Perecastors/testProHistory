@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>essai Json</title>
+</head>
+<body>
+
+<form id="selectLigne">
+    <input type="checkbox" name="ligne" value="top">Top<br>
+    <input type="checkbox" name="ligne" value="jungle">Jungle<br/>
+    <input type="checkbox" name="ligne" value="mid">Mid<br/>
+    <input type="checkbox" name="ligne" value="adc">Adc<br>
+    <input type="checkbox" name="ligne" value="support">Support<br/>
+    <input type="button" value="Go" onclick="importChampionsJson();">
+</form><br/><br/>
+
+<div>
+    Top : <span id="top"></span>
+</div>
+<div>
+    Jungle : <span id="jungle"></span>
+</div>
+<div>
+    Mid : <span id="mid"></span>
+</div>
+<div>
+    Adc : <span id="adc"></span>
+</div>
+<div>
+    Support : <span id="support"></span>
+</div>
+
+
+<script type="text/javascript" src="\public\jquery-ui-1.12.1.custom\external\jquery\jquery.js"></script>
+<script type="text/javascript" src="\public\jquery-ui-1.12.1.custom\jquery-ui.js"></script>
+<script type="text/javascript" src="\public\javascripts\essaiJson.js"></script>
+
+</body>
+</html>

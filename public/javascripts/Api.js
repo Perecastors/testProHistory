@@ -31,7 +31,7 @@ function importJson(){
     $.ajax({
        url : "http://www.omdbapi.com/?",
        dataType : 'json',
-       data : 't='+titreFilm+'&plot=full'+'&type=movie',
+       data : 't='+titreFilm+'&plot=full',
        success : function(data, statut,sucess){
             affichage(data)
        },
@@ -45,6 +45,7 @@ function importJson(){
 
 $( function() {
     $( "#titreDuFilm" ).autocomplete({
+
         minLength: 2,
         source: function(requete,reponse){
 

@@ -5,6 +5,7 @@
 <a href="/">Retourner à l'accueil</a>
 <a class="lien2" href="/pref-cont">Gérer préférences/contraintes</a>
 <a class="lien2" href="/API">API</a>
+<a class="lien2" href="/accesPageChampionsJson">Json</a>
 <a class="lien2" href="/jQuery">Test</a><br/><br/><br/>
 
 <div id="tabPoolChamp" class="toggleYourChampionPool">
@@ -162,78 +163,79 @@
         #{else}
         ${poolChampions.size()} combinaisons possibles
         #{/else}
+        <input type="button" onclick="changementAffichage();" value="Top <-> Jungle">
     </div>
 
     <br/><br/>
 
     <div>
         <div class="col1">
-            <div class="ligne1"><strong>Top</strong></div>
+            <div class="ligne1" id="ligne1"><strong>Top</strong></div>
         </div>
         <div class="col">
-            <div class="ligne1"><strong>Jungle</strong></div>
+            <div class="ligne1" id="ligne2"><strong>Jungle</strong></div>
         </div>
         <div class="col">
-            <div class="ligne1"><strong>Mid</strong></div>
+            <div class="ligne1" id="ligne3"><strong>Mid</strong></div>
         </div>
         <div class="col">
-            <div class="ligne1"><strong>Adc</strong></div>
+            <div class="ligne1" id="ligne4"><strong>Adc</strong></div>
         </div>
         <div class="col">
-            <div class="ligne1"><strong>Support</strong></div>
+            <div class="ligne1" id="ligne5"><strong>Support</strong></div>
         </div>
     </div>
 
     <div id="imageComboChamp">
         #{if poolChampions.size()>40}
-        <div class="col1">
+        <div class="col1" id="col1">
             #{list items:poolChampions.subList(0,40), as:'pool'}
             <div class="ligne"><img class="ligne" src=${pool.championTop.getUrlImage()} title="${pool.championTop.nom}" border="4"></div>
             #{/list}
         </div>
-        <div class="col">
+        <div class="col" id="col2">
             #{list items:poolChampions.subList(0,40), as:'pool'}
             <div class="ligne"><img class="ligne" src=${pool.championJungle.getUrlImage()} title="${pool.championJungle.nom}" border="4"></div>
             #{/list}
         </div>
-        <div class="col">
+        <div class="col" id="col3">
             #{list items:poolChampions.subList(0,40), as:'pool'}
             <div class="ligne"><img class="ligne" src=${pool.championMid.getUrlImage()} title="${pool.championMid.nom}" border="4"></div>
             #{/list}
         </div>
-        <div class="col">
+        <div class="col" id="col4">
             #{list items:poolChampions.subList(0,40), as:'pool'}
             <div class="ligne"><img class="ligne" src=${pool.championAdc.getUrlImage()} title="${pool.championAdc.nom}" border="4"></div>
             #{/list}
         </div>
-        <div class="col">
+        <div class="col" id="col5">
             #{list items:poolChampions.subList(0,40), as:'pool'}
             <div class="ligne"><img class="ligne" src=${pool.championSupport.getUrlImage()} title="${pool.championSupport.nom}" border="4"></div>
             #{/list}
         </div>
         #{/if}
         #{else}
-        <div class="col1">
+        <div class="col1" id="col1a">
             #{list items:poolChampions, as:'pool'}
             <div class="ligne"><img class="ligne" src=${pool.championTop.getUrlImage()} title="${pool.championTop.nom}" border="4"></div>
             #{/list}
         </div>
-        <div class="col">
+        <div class="col" id="col2a">
             #{list items:poolChampions, as:'pool'}
             <div class="ligne"><img class="ligne" src=${pool.championJungle.getUrlImage()} title="${pool.championJungle.nom}" border="4"></div>
             #{/list}
         </div>
-        <div class="col">
+        <div class="col" id="col3a">
             #{list items:poolChampions, as:'pool'}
             <div class="ligne"><img class="ligne" src=${pool.championMid.getUrlImage()} title="${pool.championMid.nom}" border="4"></div>
             #{/list}
         </div>
-        <div class="col">
+        <div class="col" id="col4a">
             #{list items:poolChampions, as:'pool'}
             <div class="ligne"><img class="ligne" src=${pool.championAdc.getUrlImage()} title="${pool.championAdc.nom}" border="4"></div>
             #{/list}
         </div>
-        <div class="col">
+        <div class="col" id="col5a">
             #{list items:poolChampions, as:'pool'}
             <div class="ligne"><img class="ligne" src=${pool.championSupport.getUrlImage()} title="${pool.championSupport.nom}" border="4"></div>
             #{/list}
@@ -246,6 +248,7 @@
     <button class="milieu toggleYourChampionPool">Your champion pool</button><br/>
     <button class="milieu toggleAdverseChampionPool">Adverse champion pool</button>
 </div>
+
 
 #{set 'moreScripts'}
 #{script 'lol.js'/}

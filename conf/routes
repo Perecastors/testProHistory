@@ -21,6 +21,9 @@ GET    /jQuery                                  ChampionsController.test
 GET    /API                                     ChampionsController.api
 GET    /pref-cont                               ChampionsController.gestionPrefCont
 POST   /pref-cont                               ChampionsController.ajouterPref
+GET    /accesPageChampionsJson                  ChampionsController.accesPageChampionsJson
+GET    /getChampionsJson                        ChampionsController.getChampionsJson(top,jungle,mid,adc,support)
+GET    /afficherOrdre                           ChampionsController.afficherOrdre(ordre)
 
 
 # Ignore favicon requests
